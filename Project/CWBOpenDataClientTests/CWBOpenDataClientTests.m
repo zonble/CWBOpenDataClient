@@ -100,7 +100,55 @@
 	}];
 
 	while (looping) {
-		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
 	}
 }
+
+- (void)testGetGroundWeatherJpegImageMetadataAsync
+{
+	__block BOOL looping = YES;
+	[CWBSharedClient().getGroundWeatherJpegImageMetadataAsync continueWithBlock:^id(BFTask *task) {
+		looping = NO;
+		XCTAssertNil(task.error, @"There should not be any error");
+		XCTAssertNotNil(task.result, @"There should be a result.");
+		NSLog(@"%@", task.result);
+		return nil;
+	}];
+
+	while (looping) {
+		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+	}
+
+	looping = YES;
+	[CWBSharedClient().getGroundWeatherJpegImageAsync continueWithBlock:^id(BFTask *task) {
+		looping = NO;
+		XCTAssertNil(task.error, @"There should not be any error");
+		UIImage *image = task.result;
+		XCTAssertTrue([image isKindOfClass:[UIImage class]], @"Must be an image");
+		return nil;
+	}];
+
+	while (looping) {
+		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+	}
+}
+
+- (void)testgetWeeklyWeatherJpegImageMetadataAsyncWithDayIndex
+{
+	for (NSInteger i = 0; i < 8; i++) {
+		__block BOOL looping = YES;
+		[[CWBSharedClient() getWeeklyWeatherJpegImageAsyncWithDayIndex:i] continueWithBlock:^id(BFTask *task) {
+			looping = NO;
+			XCTAssertNil(task.error, @"There should not be any error");
+			UIImage *image = task.result;
+			XCTAssertTrue([image isKindOfClass:[UIImage class]], @"Must be an image %d", i);
+			return nil;
+		}];
+
+		while (looping) {
+			[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+		}
+	}
+}
+
 @end

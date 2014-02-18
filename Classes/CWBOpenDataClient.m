@@ -2,7 +2,7 @@
 
 @interface CWBTaskCompletionSource : BFTaskCompletionSource
 + (CWBTaskCompletionSource *)taskCompletionSource;
-@property (strong, nonatomic) NSURLSessionDataTask *dataTask;
+@property (strong, nonatomic) NSURLSessionTask *connectionTask;
 @end
 
 @implementation CWBTaskCompletionSource
@@ -14,13 +14,13 @@
 
 - (void)dealloc
 {
-	[self.dataTask cancel];
-	self.dataTask = nil;
+	[self.connectionTask cancel];
+	self.connectionTask = nil;
 }
 
 - (void)cancel
 {
-	[self.dataTask cancel];
+	[self.connectionTask cancel];
 	[super cancel];
 }
 
@@ -48,8 +48,8 @@ CWBOpenDataClient *CWBSharedClient()
 {
 	self = [super initWithBaseURL:[NSURL URLWithString:@"http://opendata.cwb.gov.tw/"]];
 	if (self) {
-		AFHTTPRequestSerializer * requestSerializer = [AFHTTPRequestSerializer serializer];
-		AFHTTPResponseSerializer * responseSerializer = [AFHTTPResponseSerializer serializer];
+		AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer serializer];
+		AFHTTPResponseSerializer *responseSerializer = [AFHTTPResponseSerializer serializer];
 		responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/xml", nil];
 		self.responseSerializer = responseSerializer;
 		self.requestSerializer = requestSerializer;
@@ -60,7 +60,8 @@ CWBOpenDataClient *CWBSharedClient()
 - (BFTask *)_taskWithPath:(NSString *)inPath
 {
 	CWBTaskCompletionSource *source = [CWBTaskCompletionSource taskCompletionSource];
-	source.dataTask = [self GET:inPath parameters:Nil success:^(NSURLSessionDataTask *task, id responseObject) {
+	NSLog(@"%s %@", __PRETTY_FUNCTION__, source);
+	source.connectionTask = [self GET:inPath parameters:Nil success:^(NSURLSessionDataTask *task, id responseObject) {
 		if (responseObject) {
 			NSError *error = nil;
 			NSString *xmlString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -75,6 +76,23 @@ CWBOpenDataClient *CWBSharedClient()
 	} failure:^(NSURLSessionDataTask *task, NSError *error) {
 		[source setError:error];
 	}];
+	return source.task;
+}
+
+- (BFTask *)_download:(NSURL *)inURL
+{
+	CWBTaskCompletionSource *source = [CWBTaskCompletionSource taskCompletionSource];
+	NSLog(@"%s %@", __PRETTY_FUNCTION__, source);
+	NSURLSessionDownloadTask *downloadTask = [[NSURLSession sharedSession] downloadTaskWithURL:inURL completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+		if (error) {
+			[source setError:error];
+		}
+		else {
+			[source setResult:location];
+		}
+	}];
+	source.connectionTask = downloadTask;
+	[downloadTask resume];
 	return source.task;
 }
 
@@ -215,5 +233,73 @@ CWBOpenDataClient *CWBSharedClient()
 {
 	return [self _taskWithPath:@"/opendata/MFC/F-C0032-030.xml"];
 }
+
+@end
+
+@implementation CWBOpenDataClient (ForecastImages)
+
+- (BFTask *)_imageTaskWithTask:(BFTask *)inTask
+{
+	return [[inTask continueWithSuccessBlock:^id(BFTask *inMetadataTask) {
+		DDXMLDocument *xmlDocument = (DDXMLDocument *)inMetadataTask.result;
+		NSString *URLString = [[[[[xmlDocument rootElement] elementsForName:@"dataset"][0] elementsForName:@"resource"][0] elementsForName:@"uri"][0] stringValue];
+		NSURL *URL = [NSURL URLWithString:URLString];
+		if (URL) {
+			return [self _download:URL];
+		}
+		return nil;
+	}] continueWithSuccessBlock:^id(BFTask *task) {
+		BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
+		NSURL *URL = (NSURL *)task.result;
+		UIImage *image = [[UIImage alloc] initWithContentsOfFile:[URL path]];
+		[source setResult:image];
+		return source.task;
+	}];
+}
+
+- (BFTask *)getGroundWeatherJpegImageMetadataAsync
+{
+	return [self _taskWithPath:@"/opendata/MFC/F-C0035-001.xml"];
+}
+
+- (BFTask *)getGroundWeatherJpegImageAsync
+{
+	return [self _imageTaskWithTask:[self getGroundWeatherJpegImageMetadataAsync]];
+}
+
+- (BFTask *)getNewestWeatherPDFDocumentMetadataAsync
+{
+	return [self _taskWithPath:@"/opendata/MFC/F-C0035-003.xml"];
+}
+
+- (BFTask *)get24HoursWeatherJpegImageMetadataAsync
+{
+	return [self _taskWithPath:@"/opendata/MFC/F-C0035-004.xml"];
+}
+
+- (BFTask *)get24HoursWeatherJpegImageAsync
+{
+	return [self _imageTaskWithTask:[self get24HoursWeatherJpegImageMetadataAsync]];
+}
+
+- (BFTask *)getWeeklyWeatherJpegImageMetadataAsyncWithDayIndex:(NSInteger)inDayIndex
+{
+	NSParameterAssert(inDayIndex >= 0 && inDayIndex <= 7);
+	NSArray *map = @[@"/opendata/MFC/F-C0035-006.xml",
+					 @"/opendata/MFC/F-C0035-007.xml",
+					 @"/opendata/MFC/F-C0035-008.xml",
+					 @"/opendata/MFC/F-C0035-009.xml",
+					 @"/opendata/MFC/F-C0035-010.xml",
+					 @"/opendata/MFC/F-C0035-011.xml",
+					 @"/opendata/MFC/F-C0035-012.xml",
+					 @"/opendata/MFC/F-C0035-013.xml"];
+	return [self _taskWithPath:map[inDayIndex]];
+}
+
+- (BFTask *)getWeeklyWeatherJpegImageAsyncWithDayIndex:(NSInteger)inDayIndex
+{
+	return [self _imageTaskWithTask:[self getWeeklyWeatherJpegImageMetadataAsyncWithDayIndex:inDayIndex]];
+}
+
 
 @end

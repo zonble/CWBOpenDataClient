@@ -42,3 +42,15 @@ CWBOpenDataClient *CWBSharedClient();
 - (BFTask *)getTipsYunlinAsync; // 雲林縣天氣小幫手
 - (BFTask *)getTipsLienchiangAsync; // 連江縣天氣小幫手
 @end
+
+@interface CWBOpenDataClient (ForecastImages)
+- (BFTask *)getGroundWeatherJpegImageMetadataAsync; // 中文彩色合成地面天氣圖
+- (BFTask *)getGroundWeatherJpegImageAsync;
+- (BFTask *)getNewestWeatherPDFDocumentMetadataAsync; // 最新天氣圖
+- (BFTask *)get24HoursWeatherJpegImageMetadataAsync; // 中文彩色合成24小時預測天氣圖
+- (BFTask *)get24HoursWeatherJpegImageAsync;
+- (BFTask *)getWeeklyWeatherJpegImageMetadataAsyncWithDayIndex:(NSInteger)inDayIndex; // 一週天氣預測圖 0-7
+- (BFTask *)getWeeklyWeatherJpegImageAsyncWithDayIndex:(NSInteger)inDayIndex;
+
+
+@end
