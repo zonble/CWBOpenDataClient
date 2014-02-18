@@ -1,0 +1,510 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		602D58F33CFA4081930A6842 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA3ABFDB8EF4212921AEB40 /* libPods.a */; };
+		D42AD48D18B39CCA000808E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42AD48C18B39CCA000808E8 /* Foundation.framework */; };
+		D42AD48F18B39CCA000808E8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42AD48E18B39CCA000808E8 /* CoreGraphics.framework */; };
+		D42AD49118B39CCA000808E8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42AD49018B39CCA000808E8 /* UIKit.framework */; };
+		D42AD49718B39CCA000808E8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D42AD49518B39CCA000808E8 /* InfoPlist.strings */; };
+		D42AD49918B39CCA000808E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D42AD49818B39CCA000808E8 /* main.m */; };
+		D42AD49D18B39CCA000808E8 /* CWBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D42AD49C18B39CCA000808E8 /* CWBAppDelegate.m */; };
+		D42AD49F18B39CCA000808E8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D42AD49E18B39CCA000808E8 /* Images.xcassets */; };
+		D42AD4A618B39CCA000808E8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42AD4A518B39CCA000808E8 /* XCTest.framework */; };
+		D42AD4A718B39CCA000808E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42AD48C18B39CCA000808E8 /* Foundation.framework */; };
+		D42AD4A818B39CCA000808E8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42AD49018B39CCA000808E8 /* UIKit.framework */; };
+		D42AD4B018B39CCA000808E8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D42AD4AE18B39CCA000808E8 /* InfoPlist.strings */; };
+		D42AD4B218B39CCA000808E8 /* CWBOpenDataClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D42AD4B118B39CCA000808E8 /* CWBOpenDataClientTests.m */; };
+		D42AD4BC18B39D85000808E8 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D42AD4BB18B39D85000808E8 /* libxml2.dylib */; };
+		D42AD4BD18B39D91000808E8 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D42AD4BB18B39D85000808E8 /* libxml2.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D42AD4A918B39CCA000808E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D42AD48118B39CCA000808E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D42AD48818B39CCA000808E8;
+			remoteInfo = CWBOpenDataClient;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4919A84538CF45FCAC90929B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		BDA3ABFDB8EF4212921AEB40 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D42AD48918B39CCA000808E8 /* CWBOpenDataClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CWBOpenDataClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D42AD48C18B39CCA000808E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D42AD48E18B39CCA000808E8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D42AD49018B39CCA000808E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D42AD49418B39CCA000808E8 /* CWBOpenDataClient-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CWBOpenDataClient-Info.plist"; sourceTree = "<group>"; };
+		D42AD49618B39CCA000808E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D42AD49818B39CCA000808E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D42AD49A18B39CCA000808E8 /* CWBOpenDataClient-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CWBOpenDataClient-Prefix.pch"; sourceTree = "<group>"; };
+		D42AD49B18B39CCA000808E8 /* CWBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CWBAppDelegate.h; sourceTree = "<group>"; };
+		D42AD49C18B39CCA000808E8 /* CWBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWBAppDelegate.m; sourceTree = "<group>"; };
+		D42AD49E18B39CCA000808E8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D42AD4A418B39CCA000808E8 /* CWBOpenDataClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CWBOpenDataClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D42AD4A518B39CCA000808E8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		D42AD4AD18B39CCA000808E8 /* CWBOpenDataClientTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CWBOpenDataClientTests-Info.plist"; sourceTree = "<group>"; };
+		D42AD4AF18B39CCA000808E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D42AD4B118B39CCA000808E8 /* CWBOpenDataClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWBOpenDataClientTests.m; sourceTree = "<group>"; };
+		D42AD4BB18B39D85000808E8 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D42AD48618B39CCA000808E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D42AD48F18B39CCA000808E8 /* CoreGraphics.framework in Frameworks */,
+				D42AD49118B39CCA000808E8 /* UIKit.framework in Frameworks */,
+				D42AD48D18B39CCA000808E8 /* Foundation.framework in Frameworks */,
+				D42AD4BC18B39D85000808E8 /* libxml2.dylib in Frameworks */,
+				602D58F33CFA4081930A6842 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D42AD4A118B39CCA000808E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D42AD4BD18B39D91000808E8 /* libxml2.dylib in Frameworks */,
+				D42AD4A618B39CCA000808E8 /* XCTest.framework in Frameworks */,
+				D42AD4A818B39CCA000808E8 /* UIKit.framework in Frameworks */,
+				D42AD4A718B39CCA000808E8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D42AD48018B39CCA000808E8 = {
+			isa = PBXGroup;
+			children = (
+				D42AD49218B39CCA000808E8 /* CWBOpenDataClient */,
+				D42AD4AB18B39CCA000808E8 /* CWBOpenDataClientTests */,
+				D42AD48B18B39CCA000808E8 /* Frameworks */,
+				D42AD48A18B39CCA000808E8 /* Products */,
+				4919A84538CF45FCAC90929B /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		D42AD48A18B39CCA000808E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D42AD48918B39CCA000808E8 /* CWBOpenDataClient.app */,
+				D42AD4A418B39CCA000808E8 /* CWBOpenDataClientTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D42AD48B18B39CCA000808E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D42AD4BB18B39D85000808E8 /* libxml2.dylib */,
+				D42AD48C18B39CCA000808E8 /* Foundation.framework */,
+				D42AD48E18B39CCA000808E8 /* CoreGraphics.framework */,
+				D42AD49018B39CCA000808E8 /* UIKit.framework */,
+				D42AD4A518B39CCA000808E8 /* XCTest.framework */,
+				BDA3ABFDB8EF4212921AEB40 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D42AD49218B39CCA000808E8 /* CWBOpenDataClient */ = {
+			isa = PBXGroup;
+			children = (
+				D42AD49B18B39CCA000808E8 /* CWBAppDelegate.h */,
+				D42AD49C18B39CCA000808E8 /* CWBAppDelegate.m */,
+				D42AD49E18B39CCA000808E8 /* Images.xcassets */,
+				D42AD49318B39CCA000808E8 /* Supporting Files */,
+			);
+			path = CWBOpenDataClient;
+			sourceTree = "<group>";
+		};
+		D42AD49318B39CCA000808E8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D42AD49418B39CCA000808E8 /* CWBOpenDataClient-Info.plist */,
+				D42AD49518B39CCA000808E8 /* InfoPlist.strings */,
+				D42AD49818B39CCA000808E8 /* main.m */,
+				D42AD49A18B39CCA000808E8 /* CWBOpenDataClient-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D42AD4AB18B39CCA000808E8 /* CWBOpenDataClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				D42AD4B118B39CCA000808E8 /* CWBOpenDataClientTests.m */,
+				D42AD4AC18B39CCA000808E8 /* Supporting Files */,
+			);
+			path = CWBOpenDataClientTests;
+			sourceTree = "<group>";
+		};
+		D42AD4AC18B39CCA000808E8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D42AD4AD18B39CCA000808E8 /* CWBOpenDataClientTests-Info.plist */,
+				D42AD4AE18B39CCA000808E8 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D42AD48818B39CCA000808E8 /* CWBOpenDataClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D42AD4B518B39CCA000808E8 /* Build configuration list for PBXNativeTarget "CWBOpenDataClient" */;
+			buildPhases = (
+				565E84EF2FA84C36A2B87519 /* Check Pods Manifest.lock */,
+				D42AD48518B39CCA000808E8 /* Sources */,
+				D42AD48618B39CCA000808E8 /* Frameworks */,
+				D42AD48718B39CCA000808E8 /* Resources */,
+				929C5A82EFC24ADC80069AF3 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CWBOpenDataClient;
+			productName = CWBOpenDataClient;
+			productReference = D42AD48918B39CCA000808E8 /* CWBOpenDataClient.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D42AD4A318B39CCA000808E8 /* CWBOpenDataClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D42AD4B818B39CCA000808E8 /* Build configuration list for PBXNativeTarget "CWBOpenDataClientTests" */;
+			buildPhases = (
+				D42AD4A018B39CCA000808E8 /* Sources */,
+				D42AD4A118B39CCA000808E8 /* Frameworks */,
+				D42AD4A218B39CCA000808E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D42AD4AA18B39CCA000808E8 /* PBXTargetDependency */,
+			);
+			name = CWBOpenDataClientTests;
+			productName = CWBOpenDataClientTests;
+			productReference = D42AD4A418B39CCA000808E8 /* CWBOpenDataClientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D42AD48118B39CCA000808E8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CWB;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Weizhong Yang";
+				TargetAttributes = {
+					D42AD4A318B39CCA000808E8 = {
+						TestTargetID = D42AD48818B39CCA000808E8;
+					};
+				};
+			};
+			buildConfigurationList = D42AD48418B39CCA000808E8 /* Build configuration list for PBXProject "CWBOpenDataClient" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D42AD48018B39CCA000808E8;
+			productRefGroup = D42AD48A18B39CCA000808E8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D42AD48818B39CCA000808E8 /* CWBOpenDataClient */,
+				D42AD4A318B39CCA000808E8 /* CWBOpenDataClientTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D42AD48718B39CCA000808E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D42AD49718B39CCA000808E8 /* InfoPlist.strings in Resources */,
+				D42AD49F18B39CCA000808E8 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D42AD4A218B39CCA000808E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D42AD4B018B39CCA000808E8 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		565E84EF2FA84C36A2B87519 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		929C5A82EFC24ADC80069AF3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D42AD48518B39CCA000808E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D42AD49918B39CCA000808E8 /* main.m in Sources */,
+				D42AD49D18B39CCA000808E8 /* CWBAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D42AD4A018B39CCA000808E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D42AD4B218B39CCA000808E8 /* CWBOpenDataClientTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D42AD4AA18B39CCA000808E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D42AD48818B39CCA000808E8 /* CWBOpenDataClient */;
+			targetProxy = D42AD4A918B39CCA000808E8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D42AD49518B39CCA000808E8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D42AD49618B39CCA000808E8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D42AD4AE18B39CCA000808E8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D42AD4AF18B39CCA000808E8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D42AD4B318B39CCA000808E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D42AD4B418B39CCA000808E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D42AD4B618B39CCA000808E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4919A84538CF45FCAC90929B /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CWBOpenDataClient/CWBOpenDataClient-Prefix.pch";
+				INFOPLIST_FILE = "CWBOpenDataClient/CWBOpenDataClient-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D42AD4B718B39CCA000808E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4919A84538CF45FCAC90929B /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CWBOpenDataClient/CWBOpenDataClient-Prefix.pch";
+				INFOPLIST_FILE = "CWBOpenDataClient/CWBOpenDataClient-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D42AD4B918B39CCA000808E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4919A84538CF45FCAC90929B /* Pods.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CWBOpenDataClient.app/CWBOpenDataClient";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CWBOpenDataClient/CWBOpenDataClient-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CWBOpenDataClientTests/CWBOpenDataClientTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		D42AD4BA18B39CCA000808E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4919A84538CF45FCAC90929B /* Pods.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CWBOpenDataClient.app/CWBOpenDataClient";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CWBOpenDataClient/CWBOpenDataClient-Prefix.pch";
+				INFOPLIST_FILE = "CWBOpenDataClientTests/CWBOpenDataClientTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D42AD48418B39CCA000808E8 /* Build configuration list for PBXProject "CWBOpenDataClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D42AD4B318B39CCA000808E8 /* Debug */,
+				D42AD4B418B39CCA000808E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D42AD4B518B39CCA000808E8 /* Build configuration list for PBXNativeTarget "CWBOpenDataClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D42AD4B618B39CCA000808E8 /* Debug */,
+				D42AD4B718B39CCA000808E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D42AD4B818B39CCA000808E8 /* Build configuration list for PBXNativeTarget "CWBOpenDataClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D42AD4B918B39CCA000808E8 /* Debug */,
+				D42AD4BA18B39CCA000808E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D42AD48118B39CCA000808E8 /* Project object */;
+}

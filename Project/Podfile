@@ -1,7 +1,2 @@
+pod 'KissXML', '~> 5.0'
 pod "CWBOpenDataClient", :path => "../CWBOpenDataClient.podspec"
-
-target "Demo" do
-end
-
-target "DemoTests" do
-end
