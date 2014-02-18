@@ -1,0 +1,7 @@
+pod "CWBOpenDataClient", :path => "../CWBOpenDataClient.podspec"
+
+target "Demo" do
+end
+
+target "DemoTests" do
+end
