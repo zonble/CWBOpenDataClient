@@ -52,6 +52,8 @@ CWBOpenDataClient *CWBSharedClient();
 - (BFTask *)getWaveForecastAsync;
 // 未來1個月潮汐預報
 - (BFTask *)getMonthlyTidePredictionAsync;
+// 明年高低潮時潮高預報
+- (BFTask *)getNextYearTidePredictionAsync;
 
 @end
 
@@ -132,6 +134,17 @@ CWBOpenDataClient *CWBSharedClient();
 /*! 中文定量降水預報圖(II) */
 - (BFTask *)getPrecipitationAmount2JpegImageMetadataAsync;
 - (BFTask *)getPrecipitationAmount2JpegImageAsync;
+
+/*! 24 小時波浪預報圖 */
+- (BFTask *)getWaveForcast24HoursJpegImageMetadataAsync;
+- (BFTask *)getWaveForcast24HoursJpegImageAsync;
+/*! 36 小時波浪預報圖 */
+- (BFTask *)getWaveForcast36HoursJpegImageMetadataAsync;
+- (BFTask *)getWaveForcast36HoursJpegImageAsync;
+/*! 48 小時波浪預報圖 */
+- (BFTask *)getWaveForcast48HoursJpegImageMetadataAsync;
+- (BFTask *)getWaveForcast48HoursJpegImageAsync;
+
 @end
 
 

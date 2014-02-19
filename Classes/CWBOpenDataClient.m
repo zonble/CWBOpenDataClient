@@ -137,6 +137,11 @@ CWBOpenDataClient *CWBSharedClient()
 	return [self _taskWithPath:@"/opendata/MFC/F-A0021-001.xml"];
 }
 
+- (BFTask *)getNextYearTidePredictionAsync
+{
+	return [self _taskWithPath:@"/opendata/MFC/F-A0023-001.xml"];
+}
+
 
 @end
 
@@ -362,7 +367,7 @@ CWBOpenDataClient *CWBSharedClient()
 
 - (BFTask *)getPrecipitationAmount1JpegImageAsync
 {
-	return [self _imageTaskWithTask:[self getPrecipitationAmount1JpegImageAsync]];
+	return [self _imageTaskWithTask:[self getPrecipitationAmount1JpegImageMetadataAsync]];
 }
 
 - (BFTask *)getPrecipitationAmount2JpegImageMetadataAsync
@@ -372,7 +377,38 @@ CWBOpenDataClient *CWBSharedClient()
 
 - (BFTask *)getPrecipitationAmount2JpegImageAsync
 {
-	return [self _imageTaskWithTask:[self getPrecipitationAmount2JpegImageAsync]];
+	return [self _imageTaskWithTask:[self getPrecipitationAmount2JpegImageMetadataAsync]];
 }
+
+- (BFTask *)getWaveForcast24HoursJpegImageMetadataAsync
+{
+	return [self _taskWithPath:@"/opendata/MFC/F-C0035-020.xml"];
+}
+
+- (BFTask *)getWaveForcast24HoursJpegImageAsync
+{
+	return [self _imageTaskWithTask:[self getWaveForcast24HoursJpegImageMetadataAsync]];
+}
+
+- (BFTask *)getWaveForcast36HoursJpegImageMetadataAsync
+{
+	return [self _taskWithPath:@"/opendata/MFC/F-C0035-021.xml"];
+}
+
+- (BFTask *)getWaveForcast36HoursJpegImageAsync
+{
+	return [self _imageTaskWithTask:[self getWaveForcast36HoursJpegImageMetadataAsync]];
+}
+
+- (BFTask *)getWaveForcast48HoursJpegImageMetadataAsync
+{
+	return [self _taskWithPath:@"/opendata/MFC/F-C0035-022.xml"];
+}
+
+- (BFTask *)getWaveForcast48HoursJpegImageAsync
+{
+	return [self _imageTaskWithTask:[self getWaveForcast48HoursJpegImageMetadataAsync]];
+}
+
 
 @end
