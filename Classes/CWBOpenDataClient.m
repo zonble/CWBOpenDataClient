@@ -47,6 +47,11 @@ CWBOpenDataClient *CWBSharedClient()
 	return shareClient;
 }
 
++ (NSString *)version
+{
+	return @"0.1.0";
+}
+
 - (id)init
 {
 	self = [super initWithBaseURL:[NSURL URLWithString:@"http://opendata.cwb.gov.tw/"]];

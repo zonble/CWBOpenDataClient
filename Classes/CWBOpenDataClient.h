@@ -6,24 +6,25 @@
 extern NSString *const CWBOpenDataClientErrorDomain;
 
 /*!
- CWBOpenDataClient is a library which helps to access forecasts and
- various open data provided by Central Weather Bureau.
+CWBOpenDataClient is a library which helps to access forecasts and
+various open data provided by Central Weather Bureau.
 
- The class provides several caterories, and each category contains
- methods to help fetching data asynchronously. CWBOpenDataClient uses
- Bolts framework to do these asynchronous tasks, so you will get a
- BFTask object after calling any method, and you can then provide a
- callack block by calling `continueWithBlock:`.
+The class provides several caterories, and each category contains
+methods to help fetching data asynchronously. CWBOpenDataClient uses
+Bolts framework to do these asynchronous tasks, so you will get a
+BFTask object after calling any method, and you can then provide a
+callack block by calling `continueWithBlock:`.
 
- To know more about Bolts framework and the idea of "Promises", please
- visit Bolts' webpage <https://github.com/BoltsFramework/Bolts-iOS>.
+To know more about Bolts framework and the idea of "Promises", please
+visit Bolts' webpage <https://github.com/BoltsFramework/Bolts-iOS>.
 
- For furthur information, please visit <http://opendata.cwb.gov.tw>.
+For furthur information, please visit <http://opendata.cwb.gov.tw>.
 */
 
 @interface CWBOpenDataClient : AFHTTPSessionManager
 /*! The singleton object. */
 + (instancetype)sharedClient;
++ (NSString *)version;
 @end
 
 /*! An alias to [CWBOpenDataClient sharedClient]. */
@@ -42,24 +43,23 @@ CWBOpenDataClient *CWBSharedClient();
 /*! Fetches the forecast for all areas in Taiwan for this week
     (一週縣市天氣預報). */
 - (BFTask *)getWeekForecastAsync;
-/*! Fetches the forecast for all major cities around the world.
+/*! Fetches the forecast for all major cities around the world
     (全球都市天氣預報). */
 - (BFTask *)getGlablCitiesForecastAsync;
 
-// 海面天氣預報
+/*! Fetches coastal waters forecasts (海面天氣預報). */
 - (BFTask *)getCoastalWatersForecastAsync;
-// 波浪預報模式資料-台灣海域預報資料
+/*! Fetches wave forecast (波浪預報模式資料-台灣海域預報資料) */
 - (BFTask *)getWaveForecastAsync;
-// 未來1個月潮汐預報
+/*! Fetchese tide prediction for the next month (未來1個月潮汐預報). */
 - (BFTask *)getMonthlyTidePredictionAsync;
-// 明年高低潮時潮高預報
+/*! Fetchese tide prediction for the next year (明年高低潮時潮高預報). */
 - (BFTask *)getNextYearTidePredictionAsync;
-
 @end
 
-/*! The category helps to fetch weather tips for each are in Taiwan
-    from CWB. Results for all tasks returned from the methods
-    contained in the catetory are XML documents. */
+/*! The category helps to fetch weather tips (天氣小幫手) for each are
+    in Taiwan from CWB. Results for all tasks returned from the
+    methods contained in the catetory are XML documents. */
 @interface CWBOpenDataClient (Tips)
 /*! Fetchese the weather tips for Taipei City (台北市天氣小幫手). */
 - (BFTask *)getTipsTaipeiCityAsync;
@@ -146,6 +146,3 @@ CWBOpenDataClient *CWBSharedClient();
 - (BFTask *)getWaveForcast48HoursJpegImageAsync;
 
 @end
-
-
-
