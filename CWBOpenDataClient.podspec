@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.screenshots      = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "zonble" => "zonble@gmail.com" }
-  s.source           = { :git => "http://EXAMPLE/NAME.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/zonble/CWBOpenDataClient.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/zonble'
 
   s.platform     = :ios, '7.0'
@@ -32,7 +32,6 @@ Pod::Spec.new do |s|
   s.ios.exclude_files = 'Classes/osx'
   s.osx.exclude_files = 'Classes/ios'
   # s.public_header_files = 'Classes/**/*.h'
-  # s.frameworks = 'SomeFramework', 'AnotherFramework'
   s.dependency 'Bolts', '~> 1.0.0'
   s.dependency 'AFNetworking', '~> 2.1.0'
   s.dependency 'KissXML', '~> 5.0'
