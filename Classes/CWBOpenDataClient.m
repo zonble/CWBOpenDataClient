@@ -150,7 +150,6 @@ CWBOpenDataClient *CWBSharedClient()
 @end
 
 @implementation CWBOpenDataClient (Tips)
-
 - (BFTask *)getTipsAsyncForArea:(CWBArea)inArea
 {
 	NSDictionary *map = @{@(CWBAreaTaipeiCity): @"/opendata/MFC/F-C0032-009.xml",
@@ -176,6 +175,72 @@ CWBOpenDataClient *CWBSharedClient()
 						  @(CWBAreaYunlin): @"/opendata/MFC/F-C0032-029.xml",
 						  @(CWBAreaLienchian): @"/opendata/MFC/F-C0032-030.xml"};
 	return [self _taskWithPath:map[@(inArea)]];
+}
+@end
+
+@implementation CWBOpenDataClient (TownLevelForecasts)
+- (BFTask *)getTownLevelForecastsForTwoDaysAsyncForArea:(CWBArea)inArea
+{
+	NSDictionary *map = @{@(CWBAreaTaipeiCity): @"/opendata/MFC/F-D0047-061.xml",
+						  @(CWBAreaNewTaipeiCity): @"/opendata/MFC/F-D0047-069.xml",
+						  @(CWBAreaKeelung): @"/opendata/MFC/F-D0047-049.xml",
+						  @(CWBAreaHualien): @"/opendata/MFC/F-D0047-041.xml",
+						  @(CWBAreaYilan): @"/opendata/MFC/F-D0047-001.xml",
+						  @(CWBAreaKinmen): @"/opendata/MFC/F-D0047-085.xml",
+						  @(CWBAreaPenghu): @"/opendata/MFC/F-D0047-045.xml",
+						  @(CWBAreaTainan): @"/opendata/MFC/F-D0047-077.xml",
+						  @(CWBAreaKaohsiung): @"/opendata/MFC/F-D0047-065.xml",
+						  @(CWBAreaChiayi): @"/opendata/MFC/F-D0047-029.xml",
+						  @(CWBAreaChiayiCity): @"/opendata/MFC/F-D0047-057.xml",
+						  @(CWBAreaMiaoli): @"/opendata/MFC/F-D0047-013.xml",
+						  @(CWBAreaTaichung): @"/opendata/MFC/F-D0047-073.xml",
+						  @(CWBAreaTaoyuan): @"/opendata/MFC/F-D0047-005.xml",
+						  @(CWBAreaHsinchu): @"/opendata/MFC/F-D0047-009.xml",
+						  @(CWBAreaHsinchuCity): @"/opendata/MFC/F-D0047-053.xml",
+						  @(CWBAreaPingtung): @"/opendata/MFC/F-D0047-033.xml",
+						  @(CWBAreaNantou): @"/opendata/MFC/F-D0047-021.xml",
+						  @(CWBAreaTaitung): @"/opendata/MFC/F-D0047-037.xml",
+						  @(CWBAreaChanghua): @"/opendata/MFC/F-D0047-017.xml",
+						  @(CWBAreaYunlin): @"/opendata/MFC/F-D0047-025.xml",
+						  @(CWBAreaLienchian): @"/opendata/MFC/F-D0047-081.xml"};
+	return [self _taskWithPath:map[@(inArea)]];
+}
+
+- (BFTask *)getAllTownLevelForecastsForTwoDaysAsync
+{
+	return [self _taskWithPath:@"/opendata/MFC/F-D0047-089.xml"];
+}
+
+- (BFTask *)getTownLevelForecastsForOneWeekAsyncForArea:(CWBArea)inArea
+{
+	NSDictionary *map = @{@(CWBAreaTaipeiCity): @"/opendata/MFC/F-D0047-063.xml",
+						  @(CWBAreaNewTaipeiCity): @"/opendata/MFC/F-D0047-071.xml",
+						  @(CWBAreaKeelung): @"/opendata/MFC/F-D0047-051.xml",
+						  @(CWBAreaHualien): @"/opendata/MFC/F-D0047-043.xml",
+						  @(CWBAreaYilan): @"/opendata/MFC/F-D0047-003.xml",
+						  @(CWBAreaKinmen): @"/opendata/MFC/F-D0047-087.xml",
+						  @(CWBAreaPenghu): @"/opendata/MFC/F-D0047-047.xml",
+						  @(CWBAreaTainan): @"/opendata/MFC/F-D0047-079.xml",
+						  @(CWBAreaKaohsiung): @"/opendata/MFC/F-D0047-067.xml",
+						  @(CWBAreaChiayi): @"/opendata/MFC/F-D0047-031.xml",
+						  @(CWBAreaChiayiCity): @"/opendata/MFC/F-D0047-059.xml",
+						  @(CWBAreaMiaoli): @"/opendata/MFC/F-D0047-015.xml",
+						  @(CWBAreaTaichung): @"/opendata/MFC/F-D0047-075.xml",
+						  @(CWBAreaTaoyuan): @"/opendata/MFC/F-D0047-007.xml",
+						  @(CWBAreaHsinchu): @"/opendata/MFC/F-D0047-011.xml",
+						  @(CWBAreaHsinchuCity): @"/opendata/MFC/F-D0047-055.xml",
+						  @(CWBAreaPingtung): @"/opendata/MFC/F-D0047-035.xml",
+						  @(CWBAreaNantou): @"/opendata/MFC/F-D0047-023.xml",
+						  @(CWBAreaTaitung): @"/opendata/MFC/F-D0047-039.xml",
+						  @(CWBAreaChanghua): @"/opendata/MFC/F-D0047-019.xml",
+						  @(CWBAreaYunlin): @"/opendata/MFC/F-D0047-027.xml",
+						  @(CWBAreaLienchian): @"/opendata/MFC/F-D0047-083.xml"};
+	return [self _taskWithPath:map[@(inArea)]];
+}
+
+- (BFTask *)getAllTownLevelForecastsForOneWeekAsync
+{
+	return [self _taskWithPath:@"/opendata/MFC/F-D0047-091.xml"];
 }
 @end
 

@@ -86,8 +86,20 @@ CWBOpenDataClient *CWBSharedClient();
     in Taiwan from CWB. */
 @interface CWBOpenDataClient (Tips)
 /*! Fetches weather tips (天氣小幫手). Results for the task returned
-    from the method contained are XML documents. */
+    from the method contained are XML documents.
+    @param inArea the area code. */
 - (BFTask *)getTipsAsyncForArea:(CWBArea)inArea;
+@end
+
+@interface CWBOpenDataClient (TownLevelForecasts)
+/*! 2 天天氣預報
+ @param inArea the area code. */
+- (BFTask *)getTownLevelForecastsForTwoDaysAsyncForArea:(CWBArea)inArea;
+- (BFTask *)getAllTownLevelForecastsForTwoDaysAsync;
+/*! 1 周天氣預報
+ @param inArea the area code. */
+- (BFTask *)getTownLevelForecastsForOneWeekAsyncForArea:(CWBArea)inArea;
+- (BFTask *)getAllTownLevelForecastsForOneWeekAsync;
 @end
 
 /*! The category helps to fetch satellite images.  */
