@@ -123,6 +123,8 @@ CWBOpenDataClient *CWBSharedClient();
 /*! 一週天氣預測圖 */
 - (BFTask *)getWeeklyWeatherJpegImageMetadataAsyncWithDayIndex:(NSInteger)inDayIndex; // 0-7
 - (BFTask *)getWeeklyWeatherJpegImageAsyncWithDayIndex:(NSInteger)inDayIndex; // 0-7
+/*! 黑白一週預測天氣圖 */
+- (BFTask *)getBlackAndWhiteWeeklyWeatherPCXImageMetadataAsync;
 
 /*! 滿潮預報影像圖 1-7 */
 - (BFTask *)getWeeklyTidePredictionJpegImageMetadataAsyncWithDayIndex:(NSInteger)inDayIndex; // 1-7
@@ -135,6 +137,9 @@ CWBOpenDataClient *CWBSharedClient();
 - (BFTask *)getPrecipitationAmount2JpegImageMetadataAsync;
 - (BFTask *)getPrecipitationAmount2JpegImageAsync;
 
+/*! 波浪分析圖 */
+- (BFTask *)getWavePCXImageMetadataAsync;
+
 /*! 24 小時波浪預報圖 */
 - (BFTask *)getWaveForcast24HoursJpegImageMetadataAsync;
 - (BFTask *)getWaveForcast24HoursJpegImageAsync;
@@ -144,5 +149,5 @@ CWBOpenDataClient *CWBSharedClient();
 /*! 48 小時波浪預報圖 */
 - (BFTask *)getWaveForcast48HoursJpegImageMetadataAsync;
 - (BFTask *)getWaveForcast48HoursJpegImageAsync;
-
 @end
+

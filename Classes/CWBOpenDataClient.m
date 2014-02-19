@@ -347,6 +347,11 @@ CWBOpenDataClient *CWBSharedClient()
 	return [self _imageTaskWithTask:[self getWeeklyWeatherJpegImageMetadataAsyncWithDayIndex:inDayIndex]];
 }
 
+- (BFTask *)getBlackAndWhiteWeeklyWeatherPCXImageMetadataAsync
+{
+	return [self _taskWithPath:@"/opendata/MFC/F-C0035-014.xml"];
+}
+
 - (BFTask *)getWeeklyTidePredictionJpegImageMetadataAsyncWithDayIndex:(NSInteger)inDayIndex
 {
 	NSParameterAssert(inDayIndex >= 1 && inDayIndex <= 7);
@@ -383,6 +388,11 @@ CWBOpenDataClient *CWBSharedClient()
 - (BFTask *)getPrecipitationAmount2JpegImageAsync
 {
 	return [self _imageTaskWithTask:[self getPrecipitationAmount2JpegImageMetadataAsync]];
+}
+
+- (BFTask *)getWavePCXImageMetadataAsync
+{
+	return [self _taskWithPath:@"/opendata/MFC/F-C0035-019.xml"];
 }
 
 - (BFTask *)getWaveForcast24HoursJpegImageMetadataAsync
