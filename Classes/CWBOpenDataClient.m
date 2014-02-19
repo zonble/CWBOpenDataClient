@@ -1,5 +1,8 @@
 #import "CWBOpenDataClient.h"
 
+NSString *const CWBOpenDataClientErrorDomain = @"CWBOpenDataClientErrorDomain";
+static NSInteger CWBOpenDataClientErrorNoImageURL = 0;
+
 @interface CWBTaskCompletionSource : BFTaskCompletionSource
 + (CWBTaskCompletionSource *)taskCompletionSource;
 @property (strong, nonatomic) NSURLSessionTask *connectionTask;
@@ -60,7 +63,6 @@ CWBOpenDataClient *CWBSharedClient()
 - (BFTask *)_taskWithPath:(NSString *)inPath
 {
 	CWBTaskCompletionSource *source = [CWBTaskCompletionSource taskCompletionSource];
-	NSLog(@"%s %@", __PRETTY_FUNCTION__, source);
 	source.connectionTask = [self GET:inPath parameters:Nil success:^(NSURLSessionDataTask *task, id responseObject) {
 		if (responseObject) {
 			NSError *error = nil;
@@ -82,7 +84,6 @@ CWBOpenDataClient *CWBSharedClient()
 - (BFTask *)_download:(NSURL *)inURL
 {
 	CWBTaskCompletionSource *source = [CWBTaskCompletionSource taskCompletionSource];
-	NSLog(@"%s %@", __PRETTY_FUNCTION__, source);
 	NSURLSessionDownloadTask *downloadTask = [[NSURLSession sharedSession] downloadTaskWithURL:inURL completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
 		if (error) {
 			[source setError:error];
@@ -238,16 +239,34 @@ CWBOpenDataClient *CWBSharedClient()
 
 @implementation CWBOpenDataClient (ForecastImages)
 
+- (NSString *)_imageURLFromXMLDocument:(DDXMLDocument *)inXMLDocument
+{
+	NSArray *datasets = [[inXMLDocument rootElement] elementsForName:@"dataset"];
+	if (![datasets count]) {
+		return nil;
+	}
+	NSArray *resources = [datasets[0] elementsForName:@"resource"];
+	if (![resources count]) {
+		return nil;
+	}
+	NSArray *uri = [resources[0] elementsForName:@"uri"];
+	if (![uri count]) {
+		return nil;
+	}
+	return [uri[0] stringValue];
+}
+
 - (BFTask *)_imageTaskWithTask:(BFTask *)inTask
 {
 	return [[inTask continueWithSuccessBlock:^id(BFTask *inMetadataTask) {
 		DDXMLDocument *xmlDocument = (DDXMLDocument *)inMetadataTask.result;
-		NSString *URLString = [[[[[xmlDocument rootElement] elementsForName:@"dataset"][0] elementsForName:@"resource"][0] elementsForName:@"uri"][0] stringValue];
+		NSString *URLString = [self _imageURLFromXMLDocument:xmlDocument];
 		NSURL *URL = [NSURL URLWithString:URLString];
 		if (URL) {
 			return [self _download:URL];
 		}
-		return nil;
+		NSError *error = [NSError errorWithDomain:CWBOpenDataClientErrorDomain code:CWBOpenDataClientErrorNoImageURL userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"No URL for the desired image found!", @"")}];
+		return [BFTask taskWithError:error];
 	}] continueWithSuccessBlock:^id(BFTask *task) {
 		BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
 		NSURL *URL = (NSURL *)task.result;
