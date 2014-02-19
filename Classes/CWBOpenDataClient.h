@@ -99,11 +99,32 @@ CWBOpenDataClient *CWBSharedClient();
 
 /*! The category helps to fetch satellite images.  */
 @interface CWBOpenDataClient (ForecastImages)
-- (BFTask *)getGroundWeatherJpegImageMetadataAsync; // 中文彩色合成地面天氣圖
+/*! 中文彩色合成地面天氣圖 */
+- (BFTask *)getGroundWeatherJpegImageMetadataAsync;
 - (BFTask *)getGroundWeatherJpegImageAsync;
-- (BFTask *)getNewestWeatherPDFDocumentMetadataAsync; // 最新天氣圖
-- (BFTask *)get24HoursWeatherJpegImageMetadataAsync; // 中文彩色合成24小時預測天氣圖
+
+/*! 最新天氣圖 */
+- (BFTask *)getNewestWeatherPDFDocumentMetadataAsync;
+
+/*! 中文彩色合成24小時預測天氣圖 */
+- (BFTask *)get24HoursWeatherJpegImageMetadataAsync;
 - (BFTask *)get24HoursWeatherJpegImageAsync;
-- (BFTask *)getWeeklyWeatherJpegImageMetadataAsyncWithDayIndex:(NSInteger)inDayIndex; // 一週天氣預測圖 0-7
-- (BFTask *)getWeeklyWeatherJpegImageAsyncWithDayIndex:(NSInteger)inDayIndex;
+
+/*! 一週天氣預測圖 */
+- (BFTask *)getWeeklyWeatherJpegImageMetadataAsyncWithDayIndex:(NSInteger)inDayIndex; // 0-7
+- (BFTask *)getWeeklyWeatherJpegImageAsyncWithDayIndex:(NSInteger)inDayIndex; // 0-7
+
+/*! 滿潮預報影像圖 1-7 */
+- (BFTask *)getWeeklyTidePredictionJpegImageMetadataAsyncWithDayIndex:(NSInteger)inDayIndex; // 1-7
+- (BFTask *)getWeeklyTidePredictionJpegImageAsyncWithDayIndex:(NSInteger)inDayIndex; // 1-7
+
+/*! 中文定量降水預報圖(I) */
+- (BFTask *)getPrecipitationAmount1JpegImageMetadataAsync;
+- (BFTask *)getPrecipitationAmount1JpegImageAsync;
+/*! 中文定量降水預報圖(II) */
+- (BFTask *)getPrecipitationAmount2JpegImageMetadataAsync;
+- (BFTask *)getPrecipitationAmount2JpegImageAsync;
 @end
+
+
+

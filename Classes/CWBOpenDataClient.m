@@ -320,5 +320,42 @@ CWBOpenDataClient *CWBSharedClient()
 	return [self _imageTaskWithTask:[self getWeeklyWeatherJpegImageMetadataAsyncWithDayIndex:inDayIndex]];
 }
 
+- (BFTask *)getWeeklyTidePredictionJpegImageMetadataAsyncWithDayIndex:(NSInteger)inDayIndex
+{
+	NSParameterAssert(inDayIndex >= 1 && inDayIndex <= 7);
+	NSArray *map = @[@"", @"/opendata/MFC/F-A0022-001.xml",
+					 @"/opendata/MFC/F-A0022-002.xml",
+					 @"/opendata/MFC/F-A0022-003.xml",
+					 @"/opendata/MFC/F-A0022-004.xml",
+					 @"/opendata/MFC/F-A0022-005.xml",
+					 @"/opendata/MFC/F-A0022-006.xml",
+					 @"/opendata/MFC/F-A0022-007.xml"];
+	return [self _taskWithPath:map[inDayIndex]];
+}
+
+- (BFTask *)getWeeklyTidePredictionJpegImageAsyncWithDayIndex:(NSInteger)inDayIndex
+{
+	return [self _imageTaskWithTask:[self getWeeklyTidePredictionJpegImageMetadataAsyncWithDayIndex:inDayIndex]];
+}
+
+- (BFTask *)getPrecipitationAmount1JpegImageMetadataAsync
+{
+	return [self _taskWithPath:@"/opendata/MFC/F-C0035-015.xml"];
+}
+
+- (BFTask *)getPrecipitationAmount1JpegImageAsync
+{
+	return [self _imageTaskWithTask:[self getPrecipitationAmount1JpegImageAsync]];
+}
+
+- (BFTask *)getPrecipitationAmount2JpegImageMetadataAsync
+{
+	return [self _taskWithPath:@"/opendata/MFC/F-C0035-017.xml"];
+}
+
+- (BFTask *)getPrecipitationAmount2JpegImageAsync
+{
+	return [self _imageTaskWithTask:[self getPrecipitationAmount2JpegImageAsync]];
+}
 
 @end
