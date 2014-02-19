@@ -26,7 +26,7 @@ extern NSString *const CWBOpenDataClientErrorDomain;
 + (instancetype)sharedClient;
 @end
 
-/*! A alias to [CWBOpenDataClient sharedClient]. */
+/*! An alias to [CWBOpenDataClient sharedClient]. */
 CWBOpenDataClient *CWBSharedClient();
 
 /*! The category helps to fetch forecasts from CWB. Results for all
