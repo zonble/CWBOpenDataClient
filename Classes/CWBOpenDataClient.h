@@ -5,6 +5,31 @@
 
 extern NSString *const CWBOpenDataClientErrorDomain;
 
+typedef enum {
+	CWBAreaTaipeiCity = 0,
+	CWBAreaNewTaipeiCity = 1,
+	CWBAreaKeelung = 2,
+	CWBAreaHualien = 3,
+	CWBAreaYilan = 4,
+	CWBAreaKinmen = 5,
+	CWBAreaPenghu = 6,
+	CWBAreaTainan = 7,
+	CWBAreaKaohsiung = 8,
+	CWBAreaChiayi = 9,
+	CWBAreaChiayiCity = 10,
+	CWBAreaMiaoli = 11,
+	CWBAreaTaichung = 12,
+	CWBAreaTaoyuan = 13,
+	CWBAreaHsinchu = 14,
+	CWBAreaHsinchuCity = 15,
+	CWBAreaPingtung = 16,
+	CWBAreaNantou = 17,
+	CWBAreaTaitung = 18,
+	CWBAreaChanghua = 19,
+	CWBAreaYunlin = 20,
+	CWBAreaLienchian = 21
+} CWBArea;
+
 /*!
 CWBOpenDataClient is a library which helps to access forecasts and
 various open data provided by Central Weather Bureau.
@@ -58,53 +83,11 @@ CWBOpenDataClient *CWBSharedClient();
 @end
 
 /*! The category helps to fetch weather tips (天氣小幫手) for each are
-    in Taiwan from CWB. Results for all tasks returned from the
-    methods contained in the catetory are XML documents. */
+    in Taiwan from CWB. */
 @interface CWBOpenDataClient (Tips)
-/*! Fetchese the weather tips for Taipei City (台北市天氣小幫手). */
-- (BFTask *)getTipsTaipeiCityAsync;
-/*! Fetchese the weather tips for New Taipei City (新北市天氣小幫手). */
-- (BFTask *)getTipsNewTaipeiCityAsync;
-/*! Fetchese the weather tips for Keelung City (基隆市天氣小幫手). */
-- (BFTask *)getTipsKeelungAsync;
-/*! Fetchese the weather tips for Hualien County (花蓮縣天氣小幫手). */
-- (BFTask *)getTipsHualienAsync;
-/*! Fetchese the weather tips for Yilan County (宜蘭縣天氣小幫手). */
-- (BFTask *)getTipsYilanAsync;
-/*! Fetchese the weather tips for Kinmen County (金門縣天氣小幫手). */
-- (BFTask *)getTipsKinmenAsync;
-/*! Fetchese the weather tips for Penghu County (澎湖縣天氣小幫手). */
-- (BFTask *)getTipsPenghuAsync;
-/*! Fetchese the weather tips for Tainan City (台南市天氣小幫手). */
-- (BFTask *)getTipsTainanAsync;
-/*! Fetchese the weather tips for Kaohsiung City (高雄市天氣小幫手). */
-- (BFTask *)getTipsKaohsiungAsync;
-/*! Fetchese the weather tips for Chiayi County (嘉義縣天氣小幫手). */
-- (BFTask *)getTipsChiayiAsync;
-/*! Fetchese the weather tips for Chiayi City (嘉義市天氣小幫手). */
-- (BFTask *)getTipsChiayiCityAsync;
-/*! Fetchese the weather tips for Miaoli County (苗栗縣天氣小幫手). */
-- (BFTask *)getTipsMiaoliAsync;
-/*! Fetchese the weather tips for Taichung County (台中市天氣小幫手). */
-- (BFTask *)getTipsTaichungAsync;
-/*! Fetchese the weather tips for Taoyuan County (桃園縣天氣小幫手). */
-- (BFTask *)getTipsTaoyuanAsync;
-/*! Fetchese the weather tips for Hsinchu County (新竹縣天氣小幫手). */
-- (BFTask *)getTipsHsinchuAsync;
-/*! Fetchese the weather tips for Hsinchu City (新竹市天氣小幫手). */
-- (BFTask *)getTipsHsinchuCityAsync;
-/*! Fetchese the weather tips for Pingtung County (屏東縣天氣小幫手). */
-- (BFTask *)getTipsPingtungAsync;
-/*! Fetchese the weather tips for Nantou County (南投縣天氣小幫手). */
-- (BFTask *)getTipsNantouAsync;
-/*! Fetchese the weather tips for Taitung County (台東縣天氣小幫手). */
-- (BFTask *)getTipsTaitungAsync;
-/*! Fetchese the weather tips for Changhua County (彰化縣天氣小幫手). */
-- (BFTask *)getTipsChanghuaAsync;
-/*! Fetchese the weather tips for Yunlin County (雲林縣天氣小幫手). */
-- (BFTask *)getTipsYunlinAsync;
-/*! Fetchese the weather tips for Lienchiang County (連江縣天氣小幫手). */
-- (BFTask *)getTipsLienchiangAsync;
+/*! Fetches weather tips (天氣小幫手). Results for the task returned
+    from the method contained are XML documents. */
+- (BFTask *)getTipsAsyncForArea:(CWBArea)inArea;
 @end
 
 /*! The category helps to fetch satellite images.  */
@@ -150,4 +133,3 @@ CWBOpenDataClient *CWBSharedClient();
 - (BFTask *)getWaveForcast48HoursJpegImageMetadataAsync;
 - (BFTask *)getWaveForcast48HoursJpegImageAsync;
 @end
-

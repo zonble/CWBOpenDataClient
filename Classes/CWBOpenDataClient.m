@@ -147,121 +147,36 @@ CWBOpenDataClient *CWBSharedClient()
 	return [self _taskWithPath:@"/opendata/MFC/F-A0023-001.xml"];
 }
 
-
 @end
 
 @implementation CWBOpenDataClient (Tips)
 
-- (BFTask *)getTipsTaipeiCityAsync
+- (BFTask *)getTipsAsyncForArea:(CWBArea)inArea
 {
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-009.xml"];
+	NSDictionary *map = @{@(CWBAreaTaipeiCity): @"/opendata/MFC/F-C0032-009.xml",
+						  @(CWBAreaNewTaipeiCity): @"/opendata/MFC/F-C0032-010.xml",
+						  @(CWBAreaKeelung): @"/opendata/MFC/F-C0032-011.xml",
+						  @(CWBAreaHualien): @"/opendata/MFC/F-C0032-012.xml",
+						  @(CWBAreaYilan): @"/opendata/MFC/F-C0032-013.xml",
+						  @(CWBAreaKinmen): @"/opendata/MFC/F-C0032-014.xml",
+						  @(CWBAreaPenghu): @"/opendata/MFC/F-C0032-015.xml",
+						  @(CWBAreaTainan): @"/opendata/MFC/F-C0032-016.xml",
+						  @(CWBAreaKaohsiung): @"/opendata/MFC/F-C0032-017.xml",
+						  @(CWBAreaChiayi): @"/opendata/MFC/F-C0032-018.xml",
+						  @(CWBAreaChiayiCity): @"/opendata/MFC/F-C0032-019.xml",
+						  @(CWBAreaMiaoli): @"/opendata/MFC/F-C0032-020.xml",
+						  @(CWBAreaTaichung): @"/opendata/MFC/F-C0032-021.xml",
+						  @(CWBAreaTaoyuan): @"/opendata/MFC/F-C0032-022.xml",
+						  @(CWBAreaHsinchu): @"/opendata/MFC/F-C0032-023.xml",
+						  @(CWBAreaHsinchuCity): @"/opendata/MFC/F-C0032-024.xml",
+						  @(CWBAreaPingtung): @"/opendata/MFC/F-C0032-025.xml",
+						  @(CWBAreaNantou): @"/opendata/MFC/F-C0032-026.xml",
+						  @(CWBAreaTaitung): @"/opendata/MFC/F-C0032-027.xml",
+						  @(CWBAreaChanghua): @"/opendata/MFC/F-C0032-028.xml",
+						  @(CWBAreaYunlin): @"/opendata/MFC/F-C0032-029.xml",
+						  @(CWBAreaLienchian): @"/opendata/MFC/F-C0032-030.xml"};
+	return [self _taskWithPath:map[@(inArea)]];
 }
-
-- (BFTask *)getTipsNewTaipeiCityAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-010.xml"];
-}
-
-- (BFTask *)getTipsKeelungAsync;
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-011.xml"];
-}
-
-- (BFTask *)getTipsHualienAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-012.xml"];
-}
-
-- (BFTask *)getTipsYilanAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-013.xml"];
-}
-
-- (BFTask *)getTipsKinmenAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-014.xml"];
-}
-
-- (BFTask *)getTipsPenghuAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-015.xml"];
-}
-
-- (BFTask *)getTipsTainanAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-016.xml"];
-}
-
-- (BFTask *)getTipsKaohsiungAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-017.xml"];
-}
-
-- (BFTask *)getTipsChiayiAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-018.xml"];
-}
-
-- (BFTask *)getTipsChiayiCityAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-019.xml"];
-}
-
-- (BFTask *)getTipsMiaoliAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-020.xml"];
-}
-
-- (BFTask *)getTipsTaichungAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-021.xml"];
-}
-
-- (BFTask *)getTipsTaoyuanAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-022.xml"];
-}
-
-- (BFTask *)getTipsHsinchuAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-023.xml"];
-}
-
-- (BFTask *)getTipsHsinchuCityAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-024.xml"];
-}
-
-- (BFTask *)getTipsPingtungAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-025.xml"];
-}
-
-- (BFTask *)getTipsNantouAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-026.xml"];
-}
-
-- (BFTask *)getTipsTaitungAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-027.xml"];
-}
-
-- (BFTask *)getTipsChanghuaAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-028.xml"];
-}
-
-- (BFTask *)getTipsYunlinAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-029.xml"];
-}
-
-- (BFTask *)getTipsLienchiangAsync
-{
-	return [self _taskWithPath:@"/opendata/MFC/F-C0032-030.xml"];
-}
-
 @end
 
 @implementation CWBOpenDataClient (ForecastImages)
