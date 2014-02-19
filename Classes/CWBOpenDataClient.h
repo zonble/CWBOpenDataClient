@@ -45,6 +45,14 @@ CWBOpenDataClient *CWBSharedClient();
 /*! Fetches the forecast for all major cities around the world.
     (全球都市天氣預報). */
 - (BFTask *)getGlablCitiesForecastAsync;
+
+// 海面天氣預報
+- (BFTask *)getCoastalWatersForecastAsync;
+// 波浪預報模式資料-台灣海域預報資料
+- (BFTask *)getWaveForecastAsync;
+// 未來1個月潮汐預報
+- (BFTask *)getMonthlyTidePredictionAsync;
+
 @end
 
 /*! The category helps to fetch weather tips for each are in Taiwan

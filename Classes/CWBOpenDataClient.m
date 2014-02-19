@@ -121,6 +121,23 @@ CWBOpenDataClient *CWBSharedClient()
 {
 	return [self _taskWithPath:@"/opendata/MFC/F-C0032-007.xml"];
 }
+
+- (BFTask *)getCoastalWatersForecastAsync
+{
+	return [self _taskWithPath:@"/opendata/MFC/F-A0012-001.xml"];
+}
+
+- (BFTask *)getWaveForecastAsync
+{
+	return [self _taskWithPath:@"/opendata/MFC/F-A0020-001.xml"];
+}
+
+- (BFTask *)getMonthlyTidePredictionAsync
+{
+	return [self _taskWithPath:@"/opendata/MFC/F-A0021-001.xml"];
+}
+
+
 @end
 
 @implementation CWBOpenDataClient (Tips)
