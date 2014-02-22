@@ -445,6 +445,16 @@ CWBOpenDataClient *CWBSharedClient()
 	return [self _taskWithPath:@"/opendata/DIV2/O-A0006-002.xml"];
 }
 
+- (BFTask *)getTideLevelObervingDataAsync
+{
+	return [self _taskWithPath:@"/opendata/MMC/O-A0017-001.xml"];
+}
+
+- (BFTask *)getSeaSurfaceTemperatureFromBuoysAndCoastalStationsAsync
+{
+	return [self _taskWithPath:@"/opendata/MMC/O-A0019-001.xml"];
+}
+
 @end
 
 
@@ -504,93 +514,32 @@ CWBOpenDataClient *CWBSharedClient()
 	return [self _imageTaskWithTask:[self getRadarMosaicForSouthTaiwanWithTerrianJpegImageMetaDataAsync]];
 }
 
-- (BFTask *)getTideLevelObervingDataAsync
+- (BFTask *)getSatelliteImageMetadataForRegion:(CWBImageRegion)inRegion type:(CWBImageType)inType
 {
-	return [self _taskWithPath:@"/opendata/MMC/O-A0017-001.xml"];
+	NSArray *map = nil;
+	switch (inType) {
+		case CWBImageTypeColorfulInfraredSatellite:
+			map = @[@"/opendata/MSC/O-B0028-001.xml", @"/opendata/MSC/O-B0028-002.xml", @"/opendata/MSC/O-B0028-003.xml"];
+			break;
+		case CWBImageTypeBlackAndWhiteInfraredSatellite:
+			map = @[@"/opendata/MSC/O-B0029-001.xml", @"/opendata/MSC/O-B0029-002.xml", @"/opendata/MSC/O-B0029-003.xml"];
+			break;
+		case CWBImageTypeColorfulEnhancedInfraredSatellite:
+			map = @[@"/opendata/MSC/O-B0030-001.xml", @"/opendata/MSC/O-B0030-002.xml", @"/opendata/MSC/O-B0030-003.xml"];
+			break;
+		case CWBImageTypeVisibleSatellite:
+			map = @[@"/opendata/MSC/O-B0031-001.xml", @"/opendata/MSC/O-B0031-002.xml", @"/opendata/MSC/O-B0031-003.xml"];
+			break;
+		default:
+			break;
+	}
+	return map[inRegion];
 }
 
-- (BFTask *)getSeaSurfaceTemperatureFromBuoysAndCoastalStationsAsync
+- (BFTask *)getSatelliteImageForRegion:(CWBImageRegion)inRegion type:(CWBImageType)inType
 {
-	return [self _taskWithPath:@"/opendata/MMC/O-A0019-001.xml"];
+	return [self _imageTaskWithTask:[self getSatelliteImageMetadataForRegion:inRegion type:inType]];
 }
-
-- (BFTask *)getColorfulInfraredSatelliteImageGlobalMetadataAsync
-{
-	return [self _taskWithPath:@"/opendata/MSC/O-B0028-001.xml"];
-}
-- (BFTask *)getColorfulInfraredSatelliteImageGlobalAsync
-{
-	return [self _imageTaskWithTask:[self getColorfulInfraredSatelliteImageGlobalMetadataAsync]];
-}
-- (BFTask *)getColorfulInfraredSatelliteImageEastAsiaMetadataAsync
-{
-	return [self _taskWithPath:@"/opendata/MSC/O-B0028-002.xml"];
-}
-- (BFTask *)getColorfulInfraredSatelliteImageEastAsiaAsync
-{
-	return [self _imageTaskWithTask:[self getColorfulInfraredSatelliteImageEastAsiaMetadataAsync]];
-}
-- (BFTask *)getColorfulInfraredSatelliteImageTaiwanMetadataAsync
-{
-	return [self _taskWithPath:@"/opendata/MSC/O-B0028-003.xml"];
-}
-- (BFTask *)getColorfulInfraredSatelliteImageTaiwanAsync
-{
-	return [self _imageTaskWithTask:[self getColorfulInfraredSatelliteImageTaiwanMetadataAsync]];
-}
-
-- (BFTask *)getBlackAndWhiteInfraredSatelliteImageGlobalMetadataAsync
-{
-	return [self _taskWithPath:@"/opendata/MSC/O-B0029-001.xml"];
-}
-- (BFTask *)getBlackAndWhiteInfraredSatelliteImageGlobalAsync
-{
-	return [self _imageTaskWithTask:[self getBlackAndWhiteInfraredSatelliteImageGlobalMetadataAsync]];
-}
-- (BFTask *)getBlackAndWhiteInfraredSatelliteImageEastAsiaMetadataAsync
-{
-	return [self _taskWithPath:@"/opendata/MSC/O-B0029-002.xml"];
-}
-- (BFTask *)getBlackAndWhiteInfraredSatelliteImageEastAsiaAsync
-{
-	return [self _imageTaskWithTask:[self getBlackAndWhiteInfraredSatelliteImageEastAsiaMetadataAsync]];
-}
-- (BFTask *)getBlackAndWhiteInfraredSatelliteImageTaiwanMetadataAsync
-{
-	return [self _taskWithPath:@"/opendata/MSC/O-B0029-003.xml"];
-}
-- (BFTask *)getBlackAndWhiteInfraredSatelliteImageTaiwanAsync
-{
-	return [self _imageTaskWithTask:[self getBlackAndWhiteInfraredSatelliteImageTaiwanMetadataAsync]];
-}
-
-- (BFTask *)getEnhancedInfraredSatelliteImageGlobalMetadataAsync
-{
-	return [self _taskWithPath:@"/opendata/MSC/O-B0030-001.xml"];
-}
-- (BFTask *)getEnhancedInfraredSatelliteImageGlobalAsync
-{
-	return [self _imageTaskWithTask:[self getEnhancedInfraredSatelliteImageGlobalMetadataAsync]];
-}
-
-- (BFTask *)getEnhancedInfraredSatelliteImageEastAsiaMetadataAsync
-{
-	return [self _taskWithPath:@"/opendata/MSC/O-B0030-002.xml"];
-}
-- (BFTask *)getEnhancedInfraredSatelliteImageEastAsiaAsync
-{
-	return [self _imageTaskWithTask:[self getEnhancedInfraredSatelliteImageEastAsiaMetadataAsync]];
-}
-
-- (BFTask *)getEnhancedInfraredSatelliteImageTaiwanMetadataAsync
-{
-	return [self _taskWithPath:@"/opendata/MSC/O-B0030-003.xml"];
-}
-- (BFTask *)getEnhancedInfraredSatelliteImageTaiwanAsync
-{
-	return [self _imageTaskWithTask:[self getEnhancedInfraredSatelliteImageTaiwanMetadataAsync]];
-}
-
 
 @end
 

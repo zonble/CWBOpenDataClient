@@ -161,7 +161,23 @@ CWBOpenDataClient *CWBSharedClient();
 - (BFTask *)getOzoneObservingDataInChengkungAsync;
 /*! 臭氧總量觀測資料-台北站 */
 - (BFTask *)getOzoneObservingDataInTaipeiAsync;
+/*! 潮位-沿岸潮位站監測資料 */
+- (BFTask *)getTideLevelObervingDataAsync;
+- (BFTask *)getSeaSurfaceTemperatureFromBuoysAndCoastalStationsAsync;
 @end
+
+typedef enum {
+	CWBImageRegionGlobal = 0,
+	CWBImageRegionEastAsian = 1,
+	CWBImageRegionTaiwan = 3
+} CWBImageRegion;
+
+typedef enum {
+	CWBImageTypeColorfulInfraredSatellite = 0, // 紅外線彩色衛星雲圖
+	CWBImageTypeBlackAndWhiteInfraredSatellite = 1, // 紅外線黑白衛星雲圖
+	CWBImageTypeColorfulEnhancedInfraredSatellite = 2, // 紅外線色調強化衛星雲圖
+	CWBImageTypeVisibleSatellite = 3 // 可見光衛星雲圖
+} CWBImageType;
 
 @interface CWBOpenDataClient (WeatherObservingImages)
 /*! 雷達回波圖彩色產品-全台灣區域無地形雷達回波圖檔 */
@@ -188,40 +204,8 @@ CWBOpenDataClient *CWBSharedClient();
 - (BFTask *)getRadarMosaicForSouthTaiwanWithTerrianJpegImageMetaDataAsync;
 - (BFTask *)getRadarMosaicForSouthTaiwanWithTerrianJpegImageAsync;
 
-/*! 潮位-沿岸潮位站監測資料 */
-- (BFTask *)getTideLevelObervingDataAsync;
-- (BFTask *)getSeaSurfaceTemperatureFromBuoysAndCoastalStationsAsync;
-
-/*! 紅外線彩色衛星雲圖-全球 */
-- (BFTask *)getColorfulInfraredSatelliteImageGlobalMetadataAsync;
-- (BFTask *)getColorfulInfraredSatelliteImageGlobalAsync;
-/*! 紅外線彩色衛星雲圖-東亞 */
-- (BFTask *)getColorfulInfraredSatelliteImageEastAsiaMetadataAsync;
-- (BFTask *)getColorfulInfraredSatelliteImageEastAsiaAsync;
-/*! 紅外線彩色衛星雲圖-台灣 */
-- (BFTask *)getColorfulInfraredSatelliteImageTaiwanMetadataAsync;
-- (BFTask *)getColorfulInfraredSatelliteImageTaiwanAsync;
-
-/*! 紅外線黑白衛星雲圖-全球 */
-- (BFTask *)getBlackAndWhiteInfraredSatelliteImageGlobalMetadataAsync;
-- (BFTask *)getBlackAndWhiteInfraredSatelliteImageGlobalAsync;
-/*! 紅外線黑白衛星雲圖-東亞 */
-- (BFTask *)getBlackAndWhiteInfraredSatelliteImageEastAsiaMetadataAsync;
-- (BFTask *)getBlackAndWhiteInfraredSatelliteImageEastAsiaAsync;
-/*! 紅外線黑白衛星雲圖-台灣 */
-- (BFTask *)getBlackAndWhiteInfraredSatelliteImageTaiwanMetadataAsync;
-- (BFTask *)getBlackAndWhiteInfraredSatelliteImageTaiwanAsync;
-
-/*! 紅外線色調強化衛星雲圖-全球 */
-- (BFTask *)getEnhancedInfraredSatelliteImageGlobalMetadataAsync;
-- (BFTask *)getEnhancedInfraredSatelliteImageGlobalAsync;
-/*! 紅外線色調強化衛星雲圖-東亞 */
-- (BFTask *)getEnhancedInfraredSatelliteImageEastAsiaMetadataAsync;
-- (BFTask *)getEnhancedInfraredSatelliteImageEastAsiaAsync;
-/*! 紅外線色調強化衛星雲圖-台灣 */
-- (BFTask *)getEnhancedInfraredSatelliteImageTaiwanMetadataAsync;
-- (BFTask *)getEnhancedInfraredSatelliteImageTaiwanAsync;
-
+- (BFTask *)getSatelliteImageMetadataForRegion:(CWBImageRegion)inRegion type:(CWBImageType)inType;
+- (BFTask *)getSatelliteImageForRegion:(CWBImageRegion)inRegion type:(CWBImageType)inType;
 
 @end
 
