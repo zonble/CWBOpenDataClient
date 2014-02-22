@@ -460,74 +460,37 @@ CWBOpenDataClient *CWBSharedClient()
 
 @implementation CWBOpenDataClient (WeatherObservingImages)
 
-- (BFTask *)getRadarMosaicForTaiwanJpegImageMetaDataAsync
+- (BFTask *)getRadarMosaicJpegImageMetadataForRegion:(CWBRadarImageRegion)inRegion blackAndWhite:(BOOL)inBlackAndWhite
 {
-	return [self _taskWithPath:@"/opendata/DIV4/O-A0011-001.xml"];
-}
-- (BFTask *)getRadarMosaicForTaiwanJpegImageAsync
-{
-	return [self _imageTaskWithTask:[self getRadarMosaicForTaiwanJpegImageMetaDataAsync]];
-}
-
-- (BFTask *)getRadarMosaicForNorthTaiwanJpegImageMetaDataAsync
-{
-	return [self _taskWithPath:@"/opendata/DIV4/O-A0011-002.xml"];
-}
-- (BFTask *)getRadarMosaicForNorthTaiwanJpegImageAsync
-{
-	return [self _imageTaskWithTask:[self getRadarMosaicForNorthTaiwanJpegImageMetaDataAsync]];
+	NSArray *map = nil;
+	if (!inBlackAndWhite) {
+		map = @[@"/opendata/DIV4/O-A0011-001.xml", @"/opendata/DIV4/O-A0011-002.xml", @"/opendata/DIV4/O-A0011-003.xml"];
+	}
+	else {
+		map = @[@"/opendata/DIV4/O-A0011-004.xml", @"/opendata/DIV4/O-A0011-005.xml", @"/opendata/DIV4/O-A0011-006.xml"];
+	}
+	return [self _taskWithPath:map[inRegion]];
 }
 
-- (BFTask *)getRadarMosaicForSouthTaiwanJpegImageMetaDataAsync
+- (BFTask *)getRadarMosaicJpegImageForRegion:(CWBRadarImageRegion)inRegion blackAndWhite:(BOOL)inBlackAndWhite
 {
-	return [self _taskWithPath:@"/opendata/DIV4/O-A0011-003.xml"];
-}
-- (BFTask *)getRadarMosaicForSouthTaiwanJpegImageAsync
-{
-	return [self _imageTaskWithTask:[self getRadarMosaicForSouthTaiwanJpegImageMetaDataAsync]];
+	return [self _imageTaskWithTask:[self getRadarMosaicJpegImageMetadataForRegion:inRegion blackAndWhite:inBlackAndWhite]];
 }
 
-- (BFTask *)getRadarMosaicForTaiwanWithTerrianJpegImageMetaDataAsync
-{
-	return [self _taskWithPath:@"/opendata/DIV4/O-A0011-004.xml"];
-}
-- (BFTask *)getRadarMosaicForTaiwanWithTerrianJpegImageAsync
-{
-	return [self _imageTaskWithTask:[self getRadarMosaicForTaiwanWithTerrianJpegImageMetaDataAsync]];
-}
-
-- (BFTask *)getRadarMosaicForNorthTaiwanWithTerrianJpegImageMetaDataAsync
-{
-	return [self _taskWithPath:@"/opendata/DIV4/O-A0011-005.xml"];
-}
-- (BFTask *)getRadarMosaicForNorthTaiwanWithTerrianJpegImageAsync
-{
-	return [self _imageTaskWithTask:[self getRadarMosaicForNorthTaiwanWithTerrianJpegImageMetaDataAsync]];
-}
-
-- (BFTask *)getRadarMosaicForSouthTaiwanWithTerrianJpegImageMetaDataAsync
-{
-	return [self _taskWithPath:@"/opendata/DIV4/O-A0011-006.xml"];
-}
-- (BFTask *)getRadarMosaicForSouthTaiwanWithTerrianJpegImageAsync
-{
-	return [self _imageTaskWithTask:[self getRadarMosaicForSouthTaiwanWithTerrianJpegImageMetaDataAsync]];
-}
-
-- (BFTask *)getSatelliteImageMetadataForRegion:(CWBImageRegion)inRegion type:(CWBImageType)inType
+- (BFTask *)getSatelliteImageMetadataForRegion:(CWBSatelliteImageRegion)inRegion type:(CWBSatelliteImageType)inType
 {
 	NSArray *map = nil;
 	switch (inType) {
-		case CWBImageTypeColorfulInfraredSatellite:
+		case CWBSatelliteImageTypeColorfulInfraredSatellite:
 			map = @[@"/opendata/MSC/O-B0028-001.xml", @"/opendata/MSC/O-B0028-002.xml", @"/opendata/MSC/O-B0028-003.xml"];
 			break;
-		case CWBImageTypeBlackAndWhiteInfraredSatellite:
+		case CWBSatelliteImageTypeBlackAndWhiteInfraredSatellite:
 			map = @[@"/opendata/MSC/O-B0029-001.xml", @"/opendata/MSC/O-B0029-002.xml", @"/opendata/MSC/O-B0029-003.xml"];
 			break;
-		case CWBImageTypeColorfulEnhancedInfraredSatellite:
+		case CWBSatelliteImageTypeColorfulEnhancedInfraredSatellite:
 			map = @[@"/opendata/MSC/O-B0030-001.xml", @"/opendata/MSC/O-B0030-002.xml", @"/opendata/MSC/O-B0030-003.xml"];
 			break;
-		case CWBImageTypeVisibleSatellite:
+		case CWBSatelliteImageTypeVisibleSatellite:
 			map = @[@"/opendata/MSC/O-B0031-001.xml", @"/opendata/MSC/O-B0031-002.xml", @"/opendata/MSC/O-B0031-003.xml"];
 			break;
 		default:
@@ -536,21 +499,35 @@ CWBOpenDataClient *CWBSharedClient()
 	return [self _taskWithPath:map[inRegion]];
 }
 
-- (BFTask *)getSatelliteImageForRegion:(CWBImageRegion)inRegion type:(CWBImageType)inType
+- (BFTask *)getSatelliteImageForRegion:(CWBSatelliteImageRegion)inRegion type:(CWBSatelliteImageType)inType
 {
 	return [self _imageTaskWithTask:[self getSatelliteImageMetadataForRegion:inRegion type:inType]];
 }
 
-- (BFTask *)getHighDefinitionSatelliteImageMetadataWithType:(CWBImageType)inType
+- (BFTask *)getHighDefinitionSatelliteImageMetadataWithType:(CWBSatelliteImageType)inType
 {
 	NSArray *map = @[@"/opendata/MSC/O-B0032-002.xml", @"/opendata/MSC/O-B0032-003.xml", @"/opendata/MSC/O-B0032-004.xml", @"/opendata/MSC/O-B0032-001.xml"];
 	return [self _taskWithPath:map[inType]];
 }
 
-- (BFTask *)getHighDefinitionSatelliteImageWithType:(CWBImageType)inType
+- (BFTask *)getHighDefinitionSatelliteImageWithType:(CWBSatelliteImageType)inType
 {
 	return [self _imageTaskWithTask:[self getHighDefinitionSatelliteImageMetadataWithType:inType]];
 }
+
+@end
+
+@implementation CWBOpenDataClient (Climate)
+
+- (BFTask *)getAgriculturalMeteoroDataFor10DaysAsync
+{
+	return [self _taskWithPath:@"/opendata/DIV3/C-A0008-001.xml"];
+}
+- (BFTask *)getAgriculturalMeteoroDataForMonthAsync
+{
+	return [self _taskWithPath:@"/opendata/DIV3/C-A0009-001.xml"];
+}
+
 
 @end
 

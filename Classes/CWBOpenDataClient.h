@@ -5,7 +5,32 @@
 
 extern NSString *const CWBOpenDataClientErrorDomain;
 
-typedef enum {
+/*!
+ @enum CWBArea
+ @constant CWBAreaTaipeiCity Taipei City (台北市)
+ @constant CWBAreaNewTaipeiCity New Taipei City (新北市)
+ @constant CWBAreaKeelung Keelung (基隆市)
+ @constant CWBAreaHualien Hualien (花蓮縣)
+ @constant CWBAreaYilan Yilan (宜蘭縣)
+ @constant CWBAreaKinmen Kinmen (金門縣)
+ @constant CWBAreaPenghu Penghu (澎湖縣)
+ @constant CWBAreaTainan Tainan (台南市)
+ @constant CWBAreaKaohsiung Kaohsiung (高雄市)
+ @constant CWBAreaChiayi Chiayi (嘉義縣)
+ @constant CWBAreaChiayiCity Chiayi City (嘉義市)
+ @constant CWBAreaMiaoli Miaoli (苗栗縣)
+ @constant CWBAreaTaichung Taichung (台中市)
+ @constant CWBAreaTaoyuan Taoyuan (桃園縣)
+ @constant CWBAreaHsinchu Hsinchu (新竹縣)
+ @constant CWBAreaHsinchuCity Hsinchu City (新竹市)
+ @constant CWBAreaPingtung Pingtung (屏東縣)
+ @constant CWBAreaNantou Nantou (南投縣)
+ @constant CWBAreaTaitung Taitung (台東縣)
+ @constant CWBAreaChanghua Changhua (彰化縣)
+ @constant CWBAreaYunlin Yunlin (雲林縣)
+ @constant CWBAreaLienchian Lienchian (連江縣)
+ */
+typedef NS_ENUM(NSUInteger, CWBArea) {
 	CWBAreaTaipeiCity = 0,
 	CWBAreaNewTaipeiCity = 1,
 	CWBAreaKeelung = 2,
@@ -28,7 +53,45 @@ typedef enum {
 	CWBAreaChanghua = 19,
 	CWBAreaYunlin = 20,
 	CWBAreaLienchian = 21
-} CWBArea;
+};
+
+/*!
+ @enum CWBRadarImageRegion
+ @constant CWBRadarImageRegionTaiwan Taiwan (台灣)
+ @constant CWBRadarImageRegionNorthTaiwan North Taiwan (北台灣)
+ @constant CWBRadarImageRegionSouthTaiwan South Taiwan (南台灣)
+ */
+typedef NS_ENUM(NSUInteger, CWBRadarImageRegion) {
+	CWBRadarImageRegionTaiwan = 0,
+	CWBRadarImageRegionNorthTaiwan = 1,
+	CWBRadarImageRegionSouthTaiwan = 2
+};
+
+/*!
+ @enum CWBSatelliteImageRegion
+ @constant CWBSatelliteImageRegionGlobal Taiwan (台灣)
+ @constant CWBSatelliteImageRegionEastAsia East Asia (東亞)
+ @constant CWBSatelliteImageRegionTaiwan Taiwan (台灣)
+ */
+typedef NS_ENUM(NSUInteger, CWBSatelliteImageRegion) {
+	CWBSatelliteImageRegionGlobal = 0,
+	CWBSatelliteImageRegionEastAsia = 1,
+	CWBSatelliteImageRegionTaiwan = 2
+};
+
+/*!
+ @enum CWBSatelliteImageType
+ @constant CWBSatelliteImageTypeColorfulInfraredSatellite 紅外線彩色衛星雲圖
+ @constant CWBSatelliteImageTypeBlackAndWhiteInfraredSatellite 紅外線黑白衛星雲圖
+ @constant CWBSatelliteImageTypeColorfulEnhancedInfraredSatellite 紅外線色調強化衛星雲圖
+ @constant CWBSatelliteImageTypeVisibleSatellite 可見光衛星雲圖
+ */
+typedef NS_ENUM(NSUInteger, CWBSatelliteImageType) {
+	CWBSatelliteImageTypeColorfulInfraredSatellite = 0,
+	CWBSatelliteImageTypeBlackAndWhiteInfraredSatellite = 1,
+	CWBSatelliteImageTypeColorfulEnhancedInfraredSatellite = 2,
+	CWBSatelliteImageTypeVisibleSatellite = 3
+};
 
 /*!
 CWBOpenDataClient is a library which helps to access forecasts and
@@ -56,20 +119,20 @@ For furthur information, please visit <http://opendata.cwb.gov.tw>.
 CWBOpenDataClient *CWBSharedClient();
 
 /*! The category helps to fetch forecasts from CWB. Results for all
-    tasks returned from the methods contained in the catetory are XML
-    documents. */
+	tasks returned from the methods contained in the catetory are XML
+	documents. */
 @interface CWBOpenDataClient (Forecasts)
 /*! Fetches the forecast for all areas in Taiwan within 36 hours
-    (今明 36 小時天氣預報). */
+	(今明 36 小時天氣預報). */
 - (BFTask *)get36HoursForecastAsync;
 /*! Fetches the forecast for all areas in Taiwan within 7 days
-    (七天天氣預報). */
+	(七天天氣預報). */
 - (BFTask *)get7DaysForecastAsync;
 /*! Fetches the forecast for all areas in Taiwan for this week
-    (一週縣市天氣預報). */
+	(一週縣市天氣預報). */
 - (BFTask *)getWeekForecastAsync;
 /*! Fetches the forecast for all major cities around the world
-    (全球都市天氣預報). */
+	(全球都市天氣預報). */
 - (BFTask *)getGlablCitiesForecastAsync;
 
 /*! Fetches coastal waters forecasts (海面天氣預報). */
@@ -83,11 +146,11 @@ CWBOpenDataClient *CWBSharedClient();
 @end
 
 /*! The category helps to fetch weather tips (天氣小幫手) for each are
-    in Taiwan from CWB. */
+	in Taiwan from CWB. */
 @interface CWBOpenDataClient (Tips)
 /*! Fetches weather tips (天氣小幫手). Results for the task returned
-    from the method contained are XML documents.
-    @param inArea the area code. */
+	from the method contained are XML documents.
+	@param inArea the area code. */
 - (BFTask *)getTipsAsyncForArea:(CWBArea)inArea;
 @end
 
@@ -166,47 +229,37 @@ CWBOpenDataClient *CWBSharedClient();
 - (BFTask *)getSeaSurfaceTemperatureFromBuoysAndCoastalStationsAsync;
 @end
 
-typedef enum {
-	CWBImageRegionGlobal = 0,
-	CWBImageRegionEastAsian = 1,
-	CWBImageRegionTaiwan = 3
-} CWBImageRegion;
-
-typedef enum {
-	CWBImageTypeColorfulInfraredSatellite = 0, // 紅外線彩色衛星雲圖
-	CWBImageTypeBlackAndWhiteInfraredSatellite = 1, // 紅外線黑白衛星雲圖
-	CWBImageTypeColorfulEnhancedInfraredSatellite = 2, // 紅外線色調強化衛星雲圖
-	CWBImageTypeVisibleSatellite = 3 // 可見光衛星雲圖
-} CWBImageType;
-
 @interface CWBOpenDataClient (WeatherObservingImages)
-/*! 雷達回波圖彩色產品-全台灣區域無地形雷達回波圖檔 */
-- (BFTask *)getRadarMosaicForTaiwanJpegImageMetaDataAsync;
-- (BFTask *)getRadarMosaicForTaiwanJpegImageAsync;
-
-/*! 雷達回波圖彩色產品-北台灣區域無地形雷達回波圖檔 */
-- (BFTask *)getRadarMosaicForNorthTaiwanJpegImageMetaDataAsync;
-- (BFTask *)getRadarMosaicForNorthTaiwanJpegImageAsync;
-
-/*! 雷達回波圖彩色產品-南台灣區域無地形雷達回波圖檔 */
-- (BFTask *)getRadarMosaicForSouthTaiwanJpegImageMetaDataAsync;
-- (BFTask *)getRadarMosaicForSouthTaiwanJpegImageAsync;
-
-/*! 雷達回波圖彩色產品-全台灣區域有地形雷達回波圖檔 */
-- (BFTask *)getRadarMosaicForTaiwanWithTerrianJpegImageMetaDataAsync;
-- (BFTask *)getRadarMosaicForTaiwanWithTerrianJpegImageAsync;
-
-/*! 雷達回波圖彩色產品-北台灣區域有地形雷達回波圖檔 */
-- (BFTask *)getRadarMosaicForNorthTaiwanWithTerrianJpegImageMetaDataAsync;
-- (BFTask *)getRadarMosaicForNorthTaiwanWithTerrianJpegImageAsync;
-
-/*! 雷達回波圖彩色產品-南台灣區域有地形雷達回波圖檔 */
-- (BFTask *)getRadarMosaicForSouthTaiwanWithTerrianJpegImageMetaDataAsync;
-- (BFTask *)getRadarMosaicForSouthTaiwanWithTerrianJpegImageAsync;
-
-- (BFTask *)getSatelliteImageMetadataForRegion:(CWBImageRegion)inRegion type:(CWBImageType)inType;
-- (BFTask *)getSatelliteImageForRegion:(CWBImageRegion)inRegion type:(CWBImageType)inType;
-- (BFTask *)getHighDefinitionSatelliteImageMetadataWithType:(CWBImageType)inType;
-- (BFTask *)getHighDefinitionSatelliteImageWithType:(CWBImageType)inType;
+/*! Fetches the metadata of a radio mosaic image for a desired region.
+ @param inRegion the region
+ @param inBlackAndWhite is the image in black and white or colorful. */
+- (BFTask *)getRadarMosaicJpegImageMetadataForRegion:(CWBRadarImageRegion)inRegion blackAndWhite:(BOOL)inBlackAndWhite;
+/*! Fetches a radio mosaic image for a desired region.
+ @param inRegion the region
+ @param inBlackAndWhite is the image in black and white or colorful. */
+- (BFTask *)getRadarMosaicJpegImageForRegion:(CWBRadarImageRegion)inRegion blackAndWhite:(BOOL)inBlackAndWhite;
+/*! Fetches the metadata of a satellite image for a desired region.
+ @param inRegion the region
+ @param inType type of the image. */
+- (BFTask *)getSatelliteImageMetadataForRegion:(CWBSatelliteImageRegion)inRegion type:(CWBSatelliteImageType)inType;
+/*! Fetches a satellite image for a desired region.
+ @param inRegion the region
+ @param inType type of the image. */
+- (BFTask *)getSatelliteImageForRegion:(CWBSatelliteImageRegion)inRegion type:(CWBSatelliteImageType)inType;
+/*! Fetches the metadata of a high-definition satellite image for a desired region.
+ @param inRegion the region
+ @param inType type of the image. */
+- (BFTask *)getHighDefinitionSatelliteImageMetadataWithType:(CWBSatelliteImageType)inType;
+/*! Fetches a high-definition satellite image for a desired region.
+ @param inRegion the region
+ @param inType type of the image. */
+- (BFTask *)getHighDefinitionSatelliteImageWithType:(CWBSatelliteImageType)inType;
 @end
 
+@interface CWBOpenDataClient (Climate)
+/*! 觀測網旬資料-一級農業氣象站觀測資料 */
+- (BFTask *)getAgriculturalMeteoroDataFor10DaysAsync;
+/*! 觀測網月資料-一級農業氣象站觀測資料 */
+- (BFTask *)getAgriculturalMeteoroDataForMonthAsync;
+
+@end
