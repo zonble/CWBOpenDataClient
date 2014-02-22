@@ -163,4 +163,20 @@ CWBOpenDataClient *CWBSharedClient();
 - (BFTask *)getOzoneObservingDataInTaipeiAsync;
 @end
 
+@interface CWBOpenDataClient (WeatherObservingImages)
+/*! 雷達回波圖彩色產品-全台灣區域無地形雷達回波圖檔 */
+- (BFTask *)getRadarMosaicForTaiwanJpegImageMetaDataAsync;
+- (BFTask *)getRadarMosaicForTaiwanJpegImageAsync;
+
+/*! 雷達回波圖彩色產品-北台灣區域無地形雷達回波圖檔 */
+- (BFTask *)getRadarMosaicForNorthTaiwanJpegImageMetaDataAsync;
+- (BFTask *)getRadarMosaicForNorthTaiwanJpegImageAsync;
+
+/*! 雷達回波圖彩色產品-喃台灣區域無地形雷達回波圖檔 */
+- (BFTask *)getRadarMosaicForSouthTaiwanJpegImageMetaDataAsync;
+- (BFTask *)getRadarMosaicForSouthTaiwanJpegImageAsync;
+
+
+
+@end
 

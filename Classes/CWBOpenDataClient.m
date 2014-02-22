@@ -445,5 +445,38 @@ CWBOpenDataClient *CWBSharedClient()
 	return [self _taskWithPath:@"/opendata/DIV2/O-A0006-002.xml"];
 }
 
+@end
+
+
+@implementation CWBOpenDataClient (WeatherObservingImages)
+
+- (BFTask *)getRadarMosaicForTaiwanJpegImageMetaDataAsync
+{
+	return [self _taskWithPath:@"/opendata/DIV4/O-A0011-001.xml"];
+}
+- (BFTask *)getRadarMosaicForTaiwanJpegImageAsync
+{
+	return [self _imageTaskWithTask:[self getRadarMosaicForTaiwanJpegImageAsync]];
+}
+
+- (BFTask *)getRadarMosaicForNorthTaiwanJpegImageMetaDataAsync
+{
+	return [self _taskWithPath:@"/opendata/DIV4/O-A0011-002.xml"];
+}
+- (BFTask *)getRadarMosaicForNorthTaiwanJpegImageAsync
+{
+	return [self _imageTaskWithTask:[self getRadarMosaicForNorthTaiwanJpegImageMetaDataAsync]];
+}
+
+- (BFTask *)getRadarMosaicForSouthTaiwanJpegImageMetaDataAsync
+{
+	return [self _taskWithPath:@"/opendata/DIV4/O-A0011-003.xml"];
+}
+- (BFTask *)getRadarMosaicForSouthTaiwanJpegImageAsync
+{
+	return [self _imageTaskWithTask:[self getRadarMosaicForSouthTaiwanJpegImageAsync]];
+}
+
 
 @end
+
