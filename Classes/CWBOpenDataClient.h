@@ -206,6 +206,7 @@ typedef enum {
 
 - (BFTask *)getSatelliteImageMetadataForRegion:(CWBImageRegion)inRegion type:(CWBImageType)inType;
 - (BFTask *)getSatelliteImageForRegion:(CWBImageRegion)inRegion type:(CWBImageType)inType;
-
+- (BFTask *)getHighDefinitionSatelliteImageMetadataWithType:(CWBImageType)inType;
+- (BFTask *)getHighDefinitionSatelliteImageWithType:(CWBImageType)inType;
 @end
 

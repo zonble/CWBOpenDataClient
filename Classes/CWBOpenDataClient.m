@@ -533,12 +533,23 @@ CWBOpenDataClient *CWBSharedClient()
 		default:
 			break;
 	}
-	return map[inRegion];
+	return [self _taskWithPath:map[inRegion]];
 }
 
 - (BFTask *)getSatelliteImageForRegion:(CWBImageRegion)inRegion type:(CWBImageType)inType
 {
 	return [self _imageTaskWithTask:[self getSatelliteImageMetadataForRegion:inRegion type:inType]];
+}
+
+- (BFTask *)getHighDefinitionSatelliteImageMetadataWithType:(CWBImageType)inType
+{
+	NSArray *map = @[@"/opendata/MSC/O-B0032-002.xml", @"/opendata/MSC/O-B0032-003.xml", @"/opendata/MSC/O-B0032-004.xml", @"/opendata/MSC/O-B0032-001.xml"];
+	return [self _taskWithPath:map[inType]];
+}
+
+- (BFTask *)getHighDefinitionSatelliteImageWithType:(CWBImageType)inType
+{
+	return [self _imageTaskWithTask:[self getHighDefinitionSatelliteImageMetadataWithType:inType]];
 }
 
 @end
