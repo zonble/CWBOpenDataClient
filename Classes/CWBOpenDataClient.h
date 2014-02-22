@@ -212,6 +212,15 @@ CWBOpenDataClient *CWBSharedClient();
 - (BFTask *)getBlackAndWhiteInfraredSatelliteImageTaiwanMetadataAsync;
 - (BFTask *)getBlackAndWhiteInfraredSatelliteImageTaiwanAsync;
 
+/*! 紅外線色調強化衛星雲圖-全球 */
+- (BFTask *)getEnhancedInfraredSatelliteImageGlobalMetadataAsync;
+- (BFTask *)getEnhancedInfraredSatelliteImageGlobalAsync;
+/*! 紅外線色調強化衛星雲圖-東亞 */
+- (BFTask *)getEnhancedInfraredSatelliteImageEastAsiaMetadataAsync;
+- (BFTask *)getEnhancedInfraredSatelliteImageEastAsiaAsync;
+/*! 紅外線色調強化衛星雲圖-台灣 */
+- (BFTask *)getEnhancedInfraredSatelliteImageTaiwanMetadataAsync;
+- (BFTask *)getEnhancedInfraredSatelliteImageTaiwanAsync;
 
 
 @end

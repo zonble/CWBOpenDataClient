@@ -564,5 +564,33 @@ CWBOpenDataClient *CWBSharedClient()
 	return [self _imageTaskWithTask:[self getBlackAndWhiteInfraredSatelliteImageTaiwanMetadataAsync]];
 }
 
+- (BFTask *)getEnhancedInfraredSatelliteImageGlobalMetadataAsync
+{
+	return [self _taskWithPath:@"/opendata/MSC/O-B0030-001.xml"];
+}
+- (BFTask *)getEnhancedInfraredSatelliteImageGlobalAsync
+{
+	return [self _imageTaskWithTask:[self getEnhancedInfraredSatelliteImageGlobalMetadataAsync]];
+}
+
+- (BFTask *)getEnhancedInfraredSatelliteImageEastAsiaMetadataAsync
+{
+	return [self _taskWithPath:@"/opendata/MSC/O-B0030-002.xml"];
+}
+- (BFTask *)getEnhancedInfraredSatelliteImageEastAsiaAsync
+{
+	return [self _imageTaskWithTask:[self getEnhancedInfraredSatelliteImageEastAsiaMetadataAsync]];
+}
+
+- (BFTask *)getEnhancedInfraredSatelliteImageTaiwanMetadataAsync
+{
+	return [self _taskWithPath:@"/opendata/MSC/O-B0030-003.xml"];
+}
+- (BFTask *)getEnhancedInfraredSatelliteImageTaiwanAsync
+{
+	return [self _imageTaskWithTask:[self getEnhancedInfraredSatelliteImageTaiwanMetadataAsync]];
+}
+
+
 @end
 
