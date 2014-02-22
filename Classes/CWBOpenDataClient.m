@@ -456,7 +456,7 @@ CWBOpenDataClient *CWBSharedClient()
 }
 - (BFTask *)getRadarMosaicForTaiwanJpegImageAsync
 {
-	return [self _imageTaskWithTask:[self getRadarMosaicForTaiwanJpegImageAsync]];
+	return [self _imageTaskWithTask:[self getRadarMosaicForTaiwanJpegImageMetaDataAsync]];
 }
 
 - (BFTask *)getRadarMosaicForNorthTaiwanJpegImageMetaDataAsync
@@ -502,6 +502,41 @@ CWBOpenDataClient *CWBSharedClient()
 - (BFTask *)getRadarMosaicForSouthTaiwanWithTerrianJpegImageAsync
 {
 	return [self _imageTaskWithTask:[self getRadarMosaicForSouthTaiwanWithTerrianJpegImageMetaDataAsync]];
+}
+
+- (BFTask *)getTideLevelObervingDataAsync
+{
+	return [self _taskWithPath:@"/opendata/MMC/O-A0017-001.xml"];
+}
+
+- (BFTask *)getSeaSurfaceTemperatureFromBuoysAndCoastalStationsAsync
+{
+	return [self _taskWithPath:@"/opendata/MMC/O-A0019-001.xml"];
+}
+
+- (BFTask *)getColorfulInfraredSatelliteImageGlobalMetadataAsync
+{
+	return [self _taskWithPath:@"/opendata/MSC/O-B0028-001.xml"];
+}
+- (BFTask *)getColorfulInfraredSatelliteImageGlobalAsync
+{
+	return [self _imageTaskWithTask:[self getColorfulInfraredSatelliteImageGlobalMetadataAsync]];
+}
+- (BFTask *)getColorfulInfraredSatelliteImageEastAsiaMetadataAsync
+{
+	return [self _taskWithPath:@"/opendata/MSC/O-B0028-002.xml"];
+}
+- (BFTask *)getColorfulInfraredSatelliteImageEastAsiaAsync
+{
+	return [self _imageTaskWithTask:[self getColorfulInfraredSatelliteImageEastAsiaMetadataAsync]];
+}
+- (BFTask *)getColorfulInfraredSatelliteImageTaiwanMetadataAsync
+{
+	return [self _taskWithPath:@"/opendata/MSC/O-B0028-003.xml"];
+}
+- (BFTask *)getColorfulInfraredSatelliteImageTaiwanAsync
+{
+	return [self _imageTaskWithTask:[self getColorfulInfraredSatelliteImageTaiwanMetadataAsync]];
 }
 
 @end

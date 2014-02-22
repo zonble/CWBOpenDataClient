@@ -187,5 +187,17 @@ CWBOpenDataClient *CWBSharedClient();
 /*! 雷達回波圖彩色產品-南台灣區域有地形雷達回波圖檔 */
 - (BFTask *)getRadarMosaicForSouthTaiwanWithTerrianJpegImageMetaDataAsync;
 - (BFTask *)getRadarMosaicForSouthTaiwanWithTerrianJpegImageAsync;
+
+/*! 潮位-沿岸潮位站監測資料 */
+- (BFTask *)getTideLevelObervingDataAsync;
+- (BFTask *)getSeaSurfaceTemperatureFromBuoysAndCoastalStationsAsync;
+
+- (BFTask *)getColorfulInfraredSatelliteImageGlobalMetadataAsync;
+- (BFTask *)getColorfulInfraredSatelliteImageGlobalAsync;
+- (BFTask *)getColorfulInfraredSatelliteImageEastAsiaMetadataAsync;
+- (BFTask *)getColorfulInfraredSatelliteImageEastAsiaAsync;
+- (BFTask *)getColorfulInfraredSatelliteImageTaiwanMetadataAsync;
+- (BFTask *)getColorfulInfraredSatelliteImageTaiwanAsync;
+
 @end
 
