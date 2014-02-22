@@ -405,5 +405,45 @@ CWBOpenDataClient *CWBSharedClient()
 	return [self _imageTaskWithTask:[self getWaveForcast48HoursJpegImageMetadataAsync]];
 }
 
+@end
+
+
+@implementation CWBOpenDataClient (WeatherObserving)
+
+- (BFTask *)getWeatherObservingDataAsync
+{
+	return [self _taskWithPath:@"/opendata/DIV2/O-A0001-001.xml"];
+}
+
+- (BFTask *)getPrecipitationObservingDataAsync
+{
+	return [self _taskWithPath:@"/opendata/DIV2/O-A0002-001.xml"];
+}
+
+- (BFTask *)getCurrentWeatherObservingDataAsync
+{
+	return [self _taskWithPath:@"/opendata/DIV2/O-A0003-001.xml"];
+}
+
+- (BFTask *)getDailyAcidRainPHScaleDataAsync
+{
+	return [self _taskWithPath:@"/opendata/DIV2/O-A0004-001.xml"];
+}
+
+- (BFTask *)getDailyUltravioletDataAsync
+{
+	return [self _taskWithPath:@"/opendata/DIV2/O-A0005-001.xml"];
+}
+
+- (BFTask *)getOzoneObservingDataInChengkungAsync
+{
+	return [self _taskWithPath:@"/opendata/DIV2/O-A0006-001.xml"];
+}
+
+- (BFTask *)getOzoneObservingDataInTaipeiAsync
+{
+	return [self _taskWithPath:@"/opendata/DIV2/O-A0006-002.xml"];
+}
+
 
 @end

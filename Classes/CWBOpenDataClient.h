@@ -145,3 +145,22 @@ CWBOpenDataClient *CWBSharedClient();
 - (BFTask *)getWaveForcast48HoursJpegImageMetadataAsync;
 - (BFTask *)getWaveForcast48HoursJpegImageAsync;
 @end
+
+@interface CWBOpenDataClient (WeatherObserving)
+/*! 自動氣象站-氣象觀測資料 */
+- (BFTask *)getWeatherObservingDataAsync;
+/*! 自動雨量站-雨量觀測資料 */
+- (BFTask *)getPrecipitationObservingDataAsync;
+/*! 局屬氣象站-現在天氣觀測報告 */
+- (BFTask *)getCurrentWeatherObservingDataAsync;
+/*! 酸雨*/
+- (BFTask *)getDailyAcidRainPHScaleDataAsync;
+/*! 紫外線 */
+- (BFTask *)getDailyUltravioletDataAsync;
+/*! 臭氧總量觀測資料-成功站 */
+- (BFTask *)getOzoneObservingDataInChengkungAsync;
+/*! 臭氧總量觀測資料-台北站 */
+- (BFTask *)getOzoneObservingDataInTaipeiAsync;
+@end
+
+
