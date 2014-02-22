@@ -55,37 +55,31 @@ typedef NS_ENUM(NSUInteger, CWBArea) {
 	CWBAreaLienchian = 21
 };
 
-/*!
- @enum CWBRadarImageRegion
- @constant CWBRadarImageRegionTaiwan Taiwan (台灣)
- @constant CWBRadarImageRegionNorthTaiwan North Taiwan (北台灣)
- @constant CWBRadarImageRegionSouthTaiwan South Taiwan (南台灣)
- */
+/*! @enum CWBRadarImageRegion
+@constant CWBRadarImageRegionTaiwan Taiwan (台灣)
+@constant CWBRadarImageRegionNorthTaiwan North Taiwan (北台灣)
+@constant CWBRadarImageRegionSouthTaiwan South Taiwan (南台灣) */
 typedef NS_ENUM(NSUInteger, CWBRadarImageRegion) {
 	CWBRadarImageRegionTaiwan = 0,
 	CWBRadarImageRegionNorthTaiwan = 1,
 	CWBRadarImageRegionSouthTaiwan = 2
 };
 
-/*!
- @enum CWBSatelliteImageRegion
- @constant CWBSatelliteImageRegionGlobal Taiwan (台灣)
- @constant CWBSatelliteImageRegionEastAsia East Asia (東亞)
- @constant CWBSatelliteImageRegionTaiwan Taiwan (台灣)
- */
+/*! @enum CWBSatelliteImageRegion
+@constant CWBSatelliteImageRegionGlobal Taiwan (台灣)
+@constant CWBSatelliteImageRegionEastAsia East Asia (東亞)
+@constant CWBSatelliteImageRegionTaiwan Taiwan (台灣) */
 typedef NS_ENUM(NSUInteger, CWBSatelliteImageRegion) {
 	CWBSatelliteImageRegionGlobal = 0,
 	CWBSatelliteImageRegionEastAsia = 1,
 	CWBSatelliteImageRegionTaiwan = 2
 };
 
-/*!
- @enum CWBSatelliteImageType
- @constant CWBSatelliteImageTypeColorfulInfraredSatellite 紅外線彩色衛星雲圖
- @constant CWBSatelliteImageTypeBlackAndWhiteInfraredSatellite 紅外線黑白衛星雲圖
- @constant CWBSatelliteImageTypeColorfulEnhancedInfraredSatellite 紅外線色調強化衛星雲圖
- @constant CWBSatelliteImageTypeVisibleSatellite 可見光衛星雲圖
- */
+/*! @enum CWBSatelliteImageType
+@constant CWBSatelliteImageTypeColorfulInfraredSatellite 紅外線彩色衛星雲圖
+@constant CWBSatelliteImageTypeBlackAndWhiteInfraredSatellite 紅外線黑白衛星雲圖
+@constant CWBSatelliteImageTypeColorfulEnhancedInfraredSatellite 紅外線色調強化衛星雲圖
+@constant CWBSatelliteImageTypeVisibleSatellite 可見光衛星雲圖 */
 typedef NS_ENUM(NSUInteger, CWBSatelliteImageType) {
 	CWBSatelliteImageTypeColorfulInfraredSatellite = 0,
 	CWBSatelliteImageTypeBlackAndWhiteInfraredSatellite = 1,
@@ -93,8 +87,7 @@ typedef NS_ENUM(NSUInteger, CWBSatelliteImageType) {
 	CWBSatelliteImageTypeVisibleSatellite = 3
 };
 
-/*!
-CWBOpenDataClient is a library which helps to access forecasts and
+/*! CWBOpenDataClient is a library which helps to access forecasts and
 various open data provided by Central Weather Bureau.
 
 The class provides several caterories, and each category contains
@@ -106,24 +99,18 @@ callack block by calling `continueWithBlock:`.
 To know more about Bolts framework and the idea of "Promises", please
 visit Bolts' webpage <https://github.com/BoltsFramework/Bolts-iOS>.
 
-For furthur information, please visit <http://opendata.cwb.gov.tw>.
-*/
+For furthur information, please visit <http://opendata.cwb.gov.tw>. */
 
 @interface CWBOpenDataClient : AFHTTPSessionManager
 /*! The singleton object. */
 + (instancetype)sharedClient;
+/*! Version of the library. */
 + (NSString *)version;
 @end
 
-/*! An alias to [CWBOpenDataClient sharedClient]. */
-CWBOpenDataClient *CWBSharedClient();
-
-/*! The category helps to fetch forecasts from CWB. Results for all
-	tasks returned from the methods contained in the catetory are XML
-	documents. */
 @interface CWBOpenDataClient (Forecasts)
-/*! Fetches the forecast for all areas in Taiwan within 36 hours
-	(今明 36 小時天氣預報). */
+/*! Fetches the forecast for all areas in Taiwan within 36 hours (今明
+	36 小時天氣預報). */
 - (BFTask *)get36HoursForecastAsync;
 /*! Fetches the forecast for all areas in Taiwan within 7 days
 	(七天天氣預報). */
@@ -145,12 +132,10 @@ CWBOpenDataClient *CWBSharedClient();
 - (BFTask *)getNextYearTidePredictionAsync;
 @end
 
-/*! The category helps to fetch weather tips (天氣小幫手) for each are
-	in Taiwan from CWB. */
 @interface CWBOpenDataClient (Tips)
 /*! Fetches weather tips (天氣小幫手). Results for the task returned
-	from the method contained are XML documents.
-	@param inArea the area code. */
+ from the method contained are XML documents.
+ @param inArea the area code. */
 - (BFTask *)getTipsAsyncForArea:(CWBArea)inArea;
 @end
 
@@ -165,47 +150,70 @@ CWBOpenDataClient *CWBSharedClient();
 - (BFTask *)getAllTownLevelForecastsForOneWeekAsync;
 @end
 
-/*! The category helps to fetch satellite images.  */
 @interface CWBOpenDataClient (ForecastImages)
-/*! 中文彩色合成地面天氣圖 */
+/*! Fetches the metadata of the current ground weather image
+	(中文彩色合成地面天氣圖). */
 - (BFTask *)getGroundWeatherJpegImageMetadataAsync;
+/*! Fetches the current ground weather image in JPEG format
+	(中文彩色合成地面天氣圖). */
 - (BFTask *)getGroundWeatherJpegImageAsync;
-
-/*! 最新天氣圖 */
+/*! Fetches the newest weather image (最新天氣圖) in PDF format */
 - (BFTask *)getNewestWeatherPDFDocumentMetadataAsync;
-
-/*! 中文彩色合成24小時預測天氣圖 */
+/*! Fetches the metadata of the image for weather prediction with 24
+	hours (中文彩色合成24小時預測天氣圖) */
 - (BFTask *)get24HoursWeatherJpegImageMetadataAsync;
+/*! Fetches the image for weather prediction with 24 hours in JPEG
+	format. (中文彩色合成24小時預測天氣圖) */
 - (BFTask *)get24HoursWeatherJpegImageAsync;
-
-/*! 一週天氣預測圖 */
-- (BFTask *)getWeeklyWeatherJpegImageMetadataAsyncWithDayIndex:(NSInteger)inDayIndex; // 0-7
-- (BFTask *)getWeeklyWeatherJpegImageAsyncWithDayIndex:(NSInteger)inDayIndex; // 0-7
+/*! Fetches the metadata of the image for weather prediction for a
+	week. (一週天氣預測圖)
+	@param inDayIndex index of the day. 0-7 */
+- (BFTask *)getWeeklyWeatherJpegImageMetadataAsyncWithDayIndex:(NSInteger)inDayIndex;
+/*! Fetches image for weather prediction for a week in JPEG format.
+	(一週天氣預測圖)
+	@param inDayIndex index of the day. 0-7 */
+- (BFTask *)getWeeklyWeatherJpegImageAsyncWithDayIndex:(NSInteger)inDayIndex;
 /*! 黑白一週預測天氣圖 */
 - (BFTask *)getBlackAndWhiteWeeklyWeatherPCXImageMetadataAsync;
-
-/*! 滿潮預報影像圖 1-7 */
-- (BFTask *)getWeeklyTidePredictionJpegImageMetadataAsyncWithDayIndex:(NSInteger)inDayIndex; // 1-7
-- (BFTask *)getWeeklyTidePredictionJpegImageAsyncWithDayIndex:(NSInteger)inDayIndex; // 1-7
-
-/*! 中文定量降水預報圖(I) */
+/*! Fetches the metadata of the image for tide prediction within a
+	week (滿潮預報影像圖).
+	@param inDayIndex index of the day. 1-7 */
+- (BFTask *)getWeeklyTidePredictionJpegImageMetadataAsyncWithDayIndex:(NSInteger)inDayIndex;
+/*! Fetches the image for tide prediction within a week in JPEG format
+	(滿潮預報影像圖).
+	@param inDayIndex index of the day. 1-7 */
+- (BFTask *)getWeeklyTidePredictionJpegImageAsyncWithDayIndex:(NSInteger)inDayIndex;
+/*! Fetches the metadata of the image for precipitation amount part 1.
+	(中文定量降水預報圖 I) */
 - (BFTask *)getPrecipitationAmount1JpegImageMetadataAsync;
+/*! Fetches the image for precipitation amount part 1 in JPEG format.
+	(中文定量降水預報圖 I) */
 - (BFTask *)getPrecipitationAmount1JpegImageAsync;
-/*! 中文定量降水預報圖(II) */
+/*! Fetches the metadata of the image for precipitation amount part 2.
+	(中文定量降水預報圖 II) */
 - (BFTask *)getPrecipitationAmount2JpegImageMetadataAsync;
+/*! Fetches the image for precipitation amount part 2 in JPEG format.
+	(中文定量降水預報圖 II) */
 - (BFTask *)getPrecipitationAmount2JpegImageAsync;
-
-/*! 波浪分析圖 */
+/*! Fetches the metadata of the image for wave analysis (波浪分析圖).  */
 - (BFTask *)getWavePCXImageMetadataAsync;
-
-/*! 24 小時波浪預報圖 */
+/*! Fetches the metadata of the image for wave forcast within 24 hours
+	in JPEG format. (24 小時波浪預報圖) */
 - (BFTask *)getWaveForcast24HoursJpegImageMetadataAsync;
+/*! Fetches the image for wave forcast within 24 hours in JPEG format.
+	(24 小時波浪預報圖) */
 - (BFTask *)getWaveForcast24HoursJpegImageAsync;
-/*! 36 小時波浪預報圖 */
+/*! Fetches the metadata of the image for wave forcast within 36 hours
+	in JPEG format. (36 小時波浪預報圖) */
 - (BFTask *)getWaveForcast36HoursJpegImageMetadataAsync;
+/*! Fetches the image for wave forcast within 36 hours in JPEG format.
+	(36 小時波浪預報圖) */
 - (BFTask *)getWaveForcast36HoursJpegImageAsync;
-/*! 48 小時波浪預報圖 */
+/*! Fetches the metadata of the image for wave forcast within 48 hours
+	in JPEG format. (48 小時波浪預報圖) */
 - (BFTask *)getWaveForcast48HoursJpegImageMetadataAsync;
+/*! Fetches the image for wave forcast within 48 hours in JPEG format.
+	(48 小時波浪預報圖) */
 - (BFTask *)getWaveForcast48HoursJpegImageAsync;
 @end
 
@@ -231,28 +239,29 @@ CWBOpenDataClient *CWBSharedClient();
 
 @interface CWBOpenDataClient (WeatherObservingImages)
 /*! Fetches the metadata of a radio mosaic image for a desired region.
- @param inRegion the region
- @param inBlackAndWhite is the image in black and white or colorful. */
+	@param inRegion the region
+	@param inBlackAndWhite is the image in black and white or
+	colorful. */
 - (BFTask *)getRadarMosaicJpegImageMetadataForRegion:(CWBRadarImageRegion)inRegion blackAndWhite:(BOOL)inBlackAndWhite;
 /*! Fetches a radio mosaic image for a desired region.
- @param inRegion the region
- @param inBlackAndWhite is the image in black and white or colorful. */
+	@param inRegion the region
+	@param inBlackAndWhite is the image in black and white or
+	colorful. */
 - (BFTask *)getRadarMosaicJpegImageForRegion:(CWBRadarImageRegion)inRegion blackAndWhite:(BOOL)inBlackAndWhite;
 /*! Fetches the metadata of a satellite image for a desired region.
- @param inRegion the region
- @param inType type of the image. */
+	@param inRegion the region
+	@param inType type of the image. */
 - (BFTask *)getSatelliteImageMetadataForRegion:(CWBSatelliteImageRegion)inRegion type:(CWBSatelliteImageType)inType;
 /*! Fetches a satellite image for a desired region.
- @param inRegion the region
- @param inType type of the image. */
+    @param inRegion the region
+    @param inType type of the image. */
 - (BFTask *)getSatelliteImageForRegion:(CWBSatelliteImageRegion)inRegion type:(CWBSatelliteImageType)inType;
-/*! Fetches the metadata of a high-definition satellite image for a desired region.
- @param inRegion the region
- @param inType type of the image. */
+/*! Fetches the metadata of a high-definition satellite image for a
+    desired region.
+    @param inType type of the image. */
 - (BFTask *)getHighDefinitionSatelliteImageMetadataWithType:(CWBSatelliteImageType)inType;
 /*! Fetches a high-definition satellite image for a desired region.
- @param inRegion the region
- @param inType type of the image. */
+    @param inType type of the image. */
 - (BFTask *)getHighDefinitionSatelliteImageWithType:(CWBSatelliteImageType)inType;
 @end
 
@@ -263,3 +272,6 @@ CWBOpenDataClient *CWBSharedClient();
 - (BFTask *)getAgriculturalMeteoroDataForMonthAsync;
 
 @end
+
+/*! An alias to [CWBOpenDataClient sharedClient]. */
+CWBOpenDataClient *CWBSharedClient();
