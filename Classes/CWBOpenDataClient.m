@@ -474,9 +474,35 @@ CWBOpenDataClient *CWBSharedClient()
 }
 - (BFTask *)getRadarMosaicForSouthTaiwanJpegImageAsync
 {
-	return [self _imageTaskWithTask:[self getRadarMosaicForSouthTaiwanJpegImageAsync]];
+	return [self _imageTaskWithTask:[self getRadarMosaicForSouthTaiwanJpegImageMetaDataAsync]];
 }
 
+- (BFTask *)getRadarMosaicForTaiwanWithTerrianJpegImageMetaDataAsync
+{
+	return [self _taskWithPath:@"/opendata/DIV4/O-A0011-004.xml"];
+}
+- (BFTask *)getRadarMosaicForTaiwanWithTerrianJpegImageAsync
+{
+	return [self _imageTaskWithTask:[self getRadarMosaicForTaiwanWithTerrianJpegImageMetaDataAsync]];
+}
+
+- (BFTask *)getRadarMosaicForNorthTaiwanWithTerrianJpegImageMetaDataAsync
+{
+	return [self _taskWithPath:@"/opendata/DIV4/O-A0011-005.xml"];
+}
+- (BFTask *)getRadarMosaicForNorthTaiwanWithTerrianJpegImageAsync
+{
+	return [self _imageTaskWithTask:[self getRadarMosaicForNorthTaiwanWithTerrianJpegImageMetaDataAsync]];
+}
+
+- (BFTask *)getRadarMosaicForSouthTaiwanWithTerrianJpegImageMetaDataAsync
+{
+	return [self _taskWithPath:@"/opendata/DIV4/O-A0011-006.xml"];
+}
+- (BFTask *)getRadarMosaicForSouthTaiwanWithTerrianJpegImageAsync
+{
+	return [self _imageTaskWithTask:[self getRadarMosaicForSouthTaiwanWithTerrianJpegImageMetaDataAsync]];
+}
 
 @end
 

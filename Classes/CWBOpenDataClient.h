@@ -172,11 +172,20 @@ CWBOpenDataClient *CWBSharedClient();
 - (BFTask *)getRadarMosaicForNorthTaiwanJpegImageMetaDataAsync;
 - (BFTask *)getRadarMosaicForNorthTaiwanJpegImageAsync;
 
-/*! 雷達回波圖彩色產品-喃台灣區域無地形雷達回波圖檔 */
+/*! 雷達回波圖彩色產品-南台灣區域無地形雷達回波圖檔 */
 - (BFTask *)getRadarMosaicForSouthTaiwanJpegImageMetaDataAsync;
 - (BFTask *)getRadarMosaicForSouthTaiwanJpegImageAsync;
 
+/*! 雷達回波圖彩色產品-全台灣區域有地形雷達回波圖檔 */
+- (BFTask *)getRadarMosaicForTaiwanWithTerrianJpegImageMetaDataAsync;
+- (BFTask *)getRadarMosaicForTaiwanWithTerrianJpegImageAsync;
 
+/*! 雷達回波圖彩色產品-北台灣區域有地形雷達回波圖檔 */
+- (BFTask *)getRadarMosaicForNorthTaiwanWithTerrianJpegImageMetaDataAsync;
+- (BFTask *)getRadarMosaicForNorthTaiwanWithTerrianJpegImageAsync;
 
+/*! 雷達回波圖彩色產品-南台灣區域有地形雷達回波圖檔 */
+- (BFTask *)getRadarMosaicForSouthTaiwanWithTerrianJpegImageMetaDataAsync;
+- (BFTask *)getRadarMosaicForSouthTaiwanWithTerrianJpegImageAsync;
 @end
 
