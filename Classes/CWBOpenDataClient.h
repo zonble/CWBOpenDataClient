@@ -192,12 +192,27 @@ CWBOpenDataClient *CWBSharedClient();
 - (BFTask *)getTideLevelObervingDataAsync;
 - (BFTask *)getSeaSurfaceTemperatureFromBuoysAndCoastalStationsAsync;
 
+/*! 紅外線彩色衛星雲圖-全球 */
 - (BFTask *)getColorfulInfraredSatelliteImageGlobalMetadataAsync;
 - (BFTask *)getColorfulInfraredSatelliteImageGlobalAsync;
+/*! 紅外線彩色衛星雲圖-東亞 */
 - (BFTask *)getColorfulInfraredSatelliteImageEastAsiaMetadataAsync;
 - (BFTask *)getColorfulInfraredSatelliteImageEastAsiaAsync;
+/*! 紅外線彩色衛星雲圖-台灣 */
 - (BFTask *)getColorfulInfraredSatelliteImageTaiwanMetadataAsync;
 - (BFTask *)getColorfulInfraredSatelliteImageTaiwanAsync;
+
+/*! 紅外線黑白衛星雲圖-全球 */
+- (BFTask *)getBlackAndWhiteInfraredSatelliteImageGlobalMetadataAsync;
+- (BFTask *)getBlackAndWhiteInfraredSatelliteImageGlobalAsync;
+/*! 紅外線黑白衛星雲圖-東亞 */
+- (BFTask *)getBlackAndWhiteInfraredSatelliteImageEastAsiaMetadataAsync;
+- (BFTask *)getBlackAndWhiteInfraredSatelliteImageEastAsiaAsync;
+/*! 紅外線黑白衛星雲圖-台灣 */
+- (BFTask *)getBlackAndWhiteInfraredSatelliteImageTaiwanMetadataAsync;
+- (BFTask *)getBlackAndWhiteInfraredSatelliteImageTaiwanAsync;
+
+
 
 @end
 
