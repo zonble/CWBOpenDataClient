@@ -68,7 +68,7 @@ CWBOpenDataClient *CWBSharedClient()
 - (BFTask *)_taskWithPath:(NSString *)inPath
 {
 	CWBTaskCompletionSource *source = [CWBTaskCompletionSource taskCompletionSource];
-	source.connectionTask = [self GET:inPath parameters:Nil success:^(NSURLSessionDataTask *task, id responseObject) {
+	source.connectionTask = [self GET:inPath parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
 		if (responseObject) {
 			NSError *error = nil;
 			NSString *xmlString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
